@@ -10,15 +10,16 @@ import Foundation
 
 class PokemonListViewModel: ObservableObject {
     
-    @Published var pokemonList = [PokemonListItem]()
+    @Published var pokemonList = [[PokemonListItem]]()
     @Published var isLoading = false
     @Published var showMsgError = false
     @Published var loadingMore = false
     @Published var searchNotFound = false
     
-    var count = 0
-    var offSet = 0
-    var pokemons = [PokemonListItem]()
+   private var count = 0
+   private var offSet = 0
+   private var pokemons = [PokemonListItem]()
+    
     func fetchPokemonList(){
         
         if (isLoading){
@@ -37,7 +38,7 @@ class PokemonListViewModel: ObservableObject {
             case.success(let pokemonsResult):
                 self.showMsgError = false
                 self.pokemons.append(contentsOf: pokemonsResult.pokemonList)
-                self.pokemonList = self.pokemons
+                self.pokemonList = self.pokemons.chunked(into: 2)
                 self.offSet +=  20
             case .failure(let error):
                 self.showMsgError = true
@@ -47,7 +48,7 @@ class PokemonListViewModel: ObservableObject {
         
     }
     func fetchLoadMore(row: Int) {
-           if (row == self.pokemons.count-1){
+           if (row == self.pokemonList.count-1){
                self.fetchPokemonList()
                loadingMore = true
            }else{
