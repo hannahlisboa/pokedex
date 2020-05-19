@@ -13,6 +13,8 @@ struct Constants {
     
     struct API {
         static let pokeApiUrl = "https://pokeapi.co/api/v2/"
+        static let baseImageURL = "https://pokeres.bastionbot.org/images/pokemon/"
+
     }
     struct Design {
            struct Color {
@@ -26,4 +28,9 @@ struct Constants {
                static let BrandFont = "PokemonSolidNormal"
            }
     }
+    enum ImageType  {
+           case gridCell
+           case banner 
+       }
 }
+
