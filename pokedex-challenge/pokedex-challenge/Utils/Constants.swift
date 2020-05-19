@@ -14,4 +14,16 @@ struct Constants {
     struct API {
         static let pokeApiUrl = "https://pokeapi.co/api/v2/"
     }
+    struct Design {
+           struct Color {
+               static let Red = "mandy"
+               static let Yellow = "corn"
+               static let Blue = "azure"
+               
+               
+           }
+           struct Font {
+               static let BrandFont = "PokemonSolidNormal"
+           }
+    }
 }
