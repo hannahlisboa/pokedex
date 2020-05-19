@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,14 @@
 		BBCAAC7D247446C600600812 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBCAAC7B247446C600600812 /* LaunchScreen.storyboard */; };
 		BBCAAC88247446C600600812 /* pokedex_challengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCAAC87247446C600600812 /* pokedex_challengeTests.swift */; };
 		BBCAAC93247446C600600812 /* pokedex_challengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCAAC92247446C600600812 /* pokedex_challengeUITests.swift */; };
+		BBCAACA2247448E700600812 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = BBCAACA1247448E700600812 /* Moya */; };
+		BBCAACA62474491800600812 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCAACA52474491800600812 /* Pokemon.swift */; };
+		BBCAACA824744A4300600812 /* PokemonList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCAACA724744A4300600812 /* PokemonList.swift */; };
+		BBCAACAA24744A4F00600812 /* PokemonAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCAACA924744A4F00600812 /* PokemonAPI.swift */; };
+		BBCAACAC24744A6100600812 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCAACAB24744A6100600812 /* NetworkManager.swift */; };
+		BBCAACAF24744B2400600812 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCAACAE24744B2400600812 /* Constants.swift */; };
+		BBCAACB224744FFA00600812 /* getPokemonListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCAACB124744FFA00600812 /* getPokemonListUseCase.swift */; };
+		BBCAACB42474545500600812 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCAACB32474545500600812 /* Connectivity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +57,13 @@
 		BBCAAC8E247446C600600812 /* pokedex-challengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "pokedex-challengeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBCAAC92247446C600600812 /* pokedex_challengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pokedex_challengeUITests.swift; sourceTree = "<group>"; };
 		BBCAAC94247446C600600812 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BBCAACA52474491800600812 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
+		BBCAACA724744A4300600812 /* PokemonList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonList.swift; sourceTree = "<group>"; };
+		BBCAACA924744A4F00600812 /* PokemonAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonAPI.swift; sourceTree = "<group>"; };
+		BBCAACAB24744A6100600812 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		BBCAACAE24744B2400600812 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		BBCAACB124744FFA00600812 /* getPokemonListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getPokemonListUseCase.swift; sourceTree = "<group>"; };
+		BBCAACB32474545500600812 /* Connectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBCAACA2247448E700600812 /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +115,9 @@
 		BBCAAC6F247446C500600812 /* pokedex-challenge */ = {
 			isa = PBXGroup;
 			children = (
+				BBCAACAD24744B1500600812 /* Utils */,
+				BBCAACA4247448FF00600812 /* Model */,
+				BBCAACA3247448F800600812 /* Services */,
 				BBCAAC70247446C500600812 /* AppDelegate.swift */,
 				BBCAAC72247446C500600812 /* SceneDelegate.swift */,
 				BBCAAC74247446C500600812 /* ContentView.swift */,
@@ -136,6 +155,42 @@
 			path = "pokedex-challengeUITests";
 			sourceTree = "<group>";
 		};
+		BBCAACA3247448F800600812 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				BBCAACB024744DD200600812 /* UseCases */,
+				BBCAACA924744A4F00600812 /* PokemonAPI.swift */,
+				BBCAACAB24744A6100600812 /* NetworkManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		BBCAACA4247448FF00600812 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BBCAACA52474491800600812 /* Pokemon.swift */,
+				BBCAACA724744A4300600812 /* PokemonList.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BBCAACAD24744B1500600812 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				BBCAACAE24744B2400600812 /* Constants.swift */,
+				BBCAACB32474545500600812 /* Connectivity.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		BBCAACB024744DD200600812 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				BBCAACB124744FFA00600812 /* getPokemonListUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -152,6 +207,9 @@
 			dependencies = (
 			);
 			name = "pokedex-challenge";
+			packageProductDependencies = (
+				BBCAACA1247448E700600812 /* Moya */,
+			);
 			productName = "pokedex-challenge";
 			productReference = BBCAAC6D247446C500600812 /* pokedex-challenge.app */;
 			productType = "com.apple.product-type.application";
@@ -224,6 +282,9 @@
 				Base,
 			);
 			mainGroup = BBCAAC64247446C500600812;
+			packageReferences = (
+				BBCAACA0247448E700600812 /* XCRemoteSwiftPackageReference "Moya" */,
+			);
 			productRefGroup = BBCAAC6E247446C500600812 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -268,8 +329,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBCAAC71247446C500600812 /* AppDelegate.swift in Sources */,
+				BBCAACA62474491800600812 /* Pokemon.swift in Sources */,
+				BBCAACB42474545500600812 /* Connectivity.swift in Sources */,
+				BBCAACAA24744A4F00600812 /* PokemonAPI.swift in Sources */,
+				BBCAACAC24744A6100600812 /* NetworkManager.swift in Sources */,
 				BBCAAC73247446C500600812 /* SceneDelegate.swift in Sources */,
 				BBCAAC75247446C500600812 /* ContentView.swift in Sources */,
+				BBCAACB224744FFA00600812 /* getPokemonListUseCase.swift in Sources */,
+				BBCAACA824744A4300600812 /* PokemonList.swift in Sources */,
+				BBCAACAF24744B2400600812 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,6 +656,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BBCAACA0247448E700600812 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 14.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BBCAACA1247448E700600812 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BBCAACA0247448E700600812 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BBCAAC65247446C500600812 /* Project object */;
 }
