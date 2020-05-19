@@ -19,8 +19,7 @@ struct PokemonListView: View {
             List{
                 ForEach(0..<self.pokemonListVM.pokemonList.count, id: \.self) { indexRow in
                     VStack {
-                        
-                        Text("\(indexRow): \(self.pokemonListVM.pokemonList[indexRow].name)")
+                        PokemonListRowView(pokemonListRow: self.pokemonListVM.pokemonList[indexRow])
                     }.listRowInsets(EdgeInsets())
                         .onAppear(){
                             self.pokemonListVM.fetchLoadMore(row: indexRow)
