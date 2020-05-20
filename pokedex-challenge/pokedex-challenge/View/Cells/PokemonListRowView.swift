@@ -18,10 +18,11 @@ struct PokemonListRowView:  View {
             
             ForEach(self.pokemonListRow, id: \.self) { pokemonItem in
                 VStack{
-//                    MoviesListCellView(movie: movie)
+                    //                    MoviesListCellView(movie: movie)
                     PokemonListCellView(pokemonItem: pokemonItem)
                 }
-                .padding(.bottom, 8)
+                .padding(.top)
+                
             }
             Spacer()
             
