@@ -9,9 +9,27 @@
 import SwiftUI
 
 struct PokemonListCellView: View {
-    var pokemonItem: PokemonListItem
+    
+    @ObservedObject var pokeListCellVM: PokemonListCellViewModel
+    
+    init(pokemonItem: PokemonListItem) {
+        self.pokeListCellVM = PokemonListCellViewModel(pokemonItem: pokemonItem)
+    }
     var body: some View {
-        Text(pokemonItem.name)
+        ZStack(alignment: .topTrailing){
+            VStack(alignment: .center){
+                ImageViewComponent(url: pokeListCellVM.urlImage, type: .gridCell)
+                HStack{
+                    Text("\(pokeListCellVM.id)")
+                    .textStyle(IdCellStyle())                    
+                    Text(pokeListCellVM.name)
+                    .textStyle(TitleCellStyle())
+                }.padding(.bottom, 5)
+            }
+        }.padding()
+            .background(Color.white)
+            .cornerRadius(15)
+            .shadow(color: Color.black.opacity(0.2), radius: 7, x: 0, y: 1)
     }
 }
 
