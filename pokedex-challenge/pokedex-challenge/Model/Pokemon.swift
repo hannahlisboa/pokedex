@@ -18,6 +18,10 @@ struct Pokemon: Hashable, Codable {
     let isDefault: Bool
     let locationAreaEncounters: String
     let order: Int
+    let stats: [PokeStat]
+    let abilities: [PokeAbility]
+    let types: [PokeType]
+    
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -28,5 +32,8 @@ struct Pokemon: Hashable, Codable {
         case isDefault = "is_default"
         case locationAreaEncounters = "location_area_encounters"
         case order
+        case types
+        case stats
+        case abilities
     }
 }
