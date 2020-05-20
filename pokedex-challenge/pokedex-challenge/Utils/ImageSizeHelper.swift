@@ -13,8 +13,8 @@ class ImageSizeHelper{
     static func getSizeGridCell() -> CGSize {
         let screenSize = UIScreen.main.bounds
         var size = CGSize()
-        size.width = screenSize.width/2 - 10
-        size.height = ((screenSize.width/2) - 10) * 1.5
+        size.width = screenSize.width/2 - 50
+        size.height =  screenSize.width/2 - 50
         return  size
         
     }
