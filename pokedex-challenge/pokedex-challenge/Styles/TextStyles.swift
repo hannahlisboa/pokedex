@@ -17,7 +17,7 @@ struct TitleCellStyle: ViewModifier {
 struct IdCellStyle: ViewModifier {
     func body(content: Content) -> some View {
         content
-         .font(Font.custom(Constants.Design.Font.BrandFont, size: 14))
+         .font(Font.custom(Constants.Design.Font.SpecialItems, size: 14))
          .foregroundColor(Color(Constants.Design.Color.Blue))
     }
 }

@@ -4,7 +4,9 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>HoboStd.otf</string>
 		<string>PokemonSolidNormal.ttf</string>
+		<string>Lemoneign-Regular.ttf</string>
 		<string>PokemonHollowNormal.ttf</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
