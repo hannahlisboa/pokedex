@@ -19,5 +19,7 @@ protocol NetworkManagerProtocol {
 }
 
 struct NetworkManager: Network {
-    var provider = MoyaProvider<PokemonAPI>()
+//    var provider = MoyaProvider<PokemonAPI>()
+    let provider: MoyaProvider<PokemonAPI> = MoyaProvider<PokemonAPI>(plugins: [NetworkLoggerPlugin()])
+    
 }
