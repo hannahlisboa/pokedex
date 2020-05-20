@@ -14,32 +14,24 @@ import KingfisherSwiftUI
 struct ImageViewComponent: View {
     
     var targetSize = CGSize()
-    var idPokemon: String?
+    var url: String
     
     let screenSize = UIScreen.main.bounds
     
-    init(id: String?, type: Constants.ImageType) {
+    init(url: String, type: Constants.ImageType) {
         
-        self.idPokemon = id
+        self.url = url
         switch type {
         case .gridCell:
             self.targetSize = ImageSizeHelper.getSizeGridCell()
         case .banner:
             self.targetSize = ImageSizeHelper.getSizeGridCell()
-        
         }
-    }
-    
-    func gerUrlImage() -> String {
-        guard let path = self.idPokemon else {
-            return ""
-        }
-        return Constants.API.baseImageURL + path + ".png"
     }
     
     var body: some View {
         
-        KFImage(URL(string: gerUrlImage()))
+        KFImage(URL(string: url))
             .cancelOnDisappear(true)
             .resizable()
             .onFailure { e in
