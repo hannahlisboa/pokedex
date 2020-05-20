@@ -11,6 +11,9 @@ import SwiftUI
 struct PokemonListView: View {
     @ObservedObject var pokemonListVM: PokemonListViewModel
     init() {
+        UITableView.appearance().tableFooterView = UIView()
+        UITableView.appearance().separatorStyle = .none
+
         pokemonListVM = PokemonListViewModel()
         pokemonListVM.fetchPokemonList()
     }
