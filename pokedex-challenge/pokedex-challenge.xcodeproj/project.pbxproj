@@ -21,9 +21,10 @@
 		BB81B6F02474A4C200ADCB7F /* Array+Chunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB81B6EF2474A4C200ADCB7F /* Array+Chunk.swift */; };
 		BB81B6F32474A51000ADCB7F /* PokemonListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB81B6F22474A51000ADCB7F /* PokemonListRowView.swift */; };
 		BB81B6F52474A5BA00ADCB7F /* PokemonListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB81B6F42474A5BA00ADCB7F /* PokemonListCellView.swift */; };
+		BB81B6F72474C8D400ADCB7F /* PokemonListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB81B6F62474C8D400ADCB7F /* PokemonListCellViewModel.swift */; };
+		BB81B6FA2474DB8D00ADCB7F /* TextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB81B6F92474DB8D00ADCB7F /* TextStyles.swift */; };
 		BBCAAC71247446C500600812 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCAAC70247446C500600812 /* AppDelegate.swift */; };
 		BBCAAC73247446C500600812 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCAAC72247446C500600812 /* SceneDelegate.swift */; };
-		BBCAAC75247446C500600812 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCAAC74247446C500600812 /* ContentView.swift */; };
 		BBCAAC77247446C600600812 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBCAAC76247446C600600812 /* Assets.xcassets */; };
 		BBCAAC7A247446C600600812 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBCAAC79247446C600600812 /* Preview Assets.xcassets */; };
 		BBCAAC7D247446C600600812 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBCAAC7B247446C600600812 /* LaunchScreen.storyboard */; };
@@ -81,10 +82,11 @@
 		BB81B6EF2474A4C200ADCB7F /* Array+Chunk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Chunk.swift"; sourceTree = "<group>"; };
 		BB81B6F22474A51000ADCB7F /* PokemonListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListRowView.swift; sourceTree = "<group>"; };
 		BB81B6F42474A5BA00ADCB7F /* PokemonListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListCellView.swift; sourceTree = "<group>"; };
+		BB81B6F62474C8D400ADCB7F /* PokemonListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListCellViewModel.swift; sourceTree = "<group>"; };
+		BB81B6F92474DB8D00ADCB7F /* TextStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyles.swift; sourceTree = "<group>"; };
 		BBCAAC6D247446C500600812 /* pokedex-challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pokedex-challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBCAAC70247446C500600812 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBCAAC72247446C500600812 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BBCAAC74247446C500600812 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BBCAAC76247446C600600812 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BBCAAC79247446C600600812 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BBCAAC7C247446C600600812 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				BB81B6CE2474631800ADCB7F /* PokemonListViewModel.swift */,
+				BB81B6F62474C8D400ADCB7F /* PokemonListCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -193,6 +196,14 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		BB81B6F82474DB6F00ADCB7F /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				BB81B6F92474DB8D00ADCB7F /* TextStyles.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
 		BBCAAC64247446C500600812 = {
 			isa = PBXGroup;
 			children = (
@@ -216,6 +227,7 @@
 		BBCAAC6F247446C500600812 /* pokedex-challenge */ = {
 			isa = PBXGroup;
 			children = (
+				BB81B6F82474DB6F00ADCB7F /* Styles */,
 				BB81B6EE2474A49E00ADCB7F /* Extensions */,
 				BB81B6DB24749E9400ADCB7F /* Components */,
 				BB81B6D224748E7200ADCB7F /* Resources */,
@@ -226,7 +238,6 @@
 				BBCAACA3247448F800600812 /* Services */,
 				BBCAAC70247446C500600812 /* AppDelegate.swift */,
 				BBCAAC72247446C500600812 /* SceneDelegate.swift */,
-				BBCAAC74247446C500600812 /* ContentView.swift */,
 				BBCAAC76247446C600600812 /* Assets.xcassets */,
 				BBCAAC7B247446C600600812 /* LaunchScreen.storyboard */,
 				BBCAAC7E247446C600600812 /* Info.plist */,
@@ -452,13 +463,14 @@
 				BBCAACAA24744A4F00600812 /* PokemonAPI.swift in Sources */,
 				BBCAACAC24744A6100600812 /* NetworkManager.swift in Sources */,
 				BBCAAC73247446C500600812 /* SceneDelegate.swift in Sources */,
-				BBCAAC75247446C500600812 /* ContentView.swift in Sources */,
 				BB81B6ED2474A17800ADCB7F /* ImageSizeHelper.swift in Sources */,
+				BB81B6FA2474DB8D00ADCB7F /* TextStyles.swift in Sources */,
 				BBCAACB224744FFA00600812 /* getPokemonListUseCase.swift in Sources */,
 				BB81B6D12474894000ADCB7F /* RootNavigationView.swift in Sources */,
 				BBCAACA824744A4300600812 /* PokemonList.swift in Sources */,
 				BB81B6CF2474631800ADCB7F /* PokemonListViewModel.swift in Sources */,
 				BBCAACAF24744B2400600812 /* Constants.swift in Sources */,
+				BB81B6F72474C8D400ADCB7F /* PokemonListCellViewModel.swift in Sources */,
 				BB81B6F02474A4C200ADCB7F /* Array+Chunk.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
