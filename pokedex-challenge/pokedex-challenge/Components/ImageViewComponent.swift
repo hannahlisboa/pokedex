@@ -18,7 +18,7 @@ struct ImageViewComponent: View {
     
     let screenSize = UIScreen.main.bounds
     
-    init(url: String, type: Constants.ImageType) {
+    init(url: String, type: Types.Image) {
         
         self.url = url
         switch type {
