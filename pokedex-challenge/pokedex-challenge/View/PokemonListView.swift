@@ -13,19 +13,22 @@ struct PokemonListView: View {
     init() {
         UITableView.appearance().tableFooterView = UIView()
         UITableView.appearance().separatorStyle = .none
-
+        
         pokemonListVM = PokemonListViewModel()
         pokemonListVM.fetchPokemonList()
     }
     var body: some View {
         ZStack{
             List{
-                ForEach(0..<self.pokemonListVM.pokemonList.count, id: \.self) { indexRow in
-                    VStack {
-                        PokemonListRowView(pokemonListRow: self.pokemonListVM.pokemonList[indexRow])
-                    }.listRowInsets(EdgeInsets())
-                        .onAppear(){
-                            self.pokemonListVM.fetchLoadMore(row: indexRow)
+                Section(header:  SearchBar(text: self.$pokemonListVM.searchText, placeholder: "search").listRowInsets(EdgeInsets())) {
+                    
+                    ForEach(0..<self.pokemonListVM.pokemonList.count, id: \.self) { indexRow in
+                        VStack {
+                            PokemonListRowView(pokemonListRow: self.pokemonListVM.pokemonList[indexRow])
+                        }.listRowInsets(EdgeInsets())
+                            .onAppear(){
+                                self.pokemonListVM.fetchLoadMore(row: indexRow)
+                        }
                     }
                 }
             }
