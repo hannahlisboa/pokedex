@@ -26,7 +26,9 @@ struct Constants {
            }
            struct Font {
                static let BrandFont = "PokemonSolidNormal"
-                static let Title = "AvenirNextCondensed-DemiBoldItalic"
+               static let Title = "Lemoneign-Regular"
+               static let SpecialItems = "HoboStd"
+
            }
     }
     enum ImageType  {
