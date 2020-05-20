@@ -15,6 +15,11 @@ class PokemonListViewModel: ObservableObject {
     @Published var showMsgError = false
     @Published var loadingMore = false
     @Published var searchNotFound = false
+    @Published var searchText: String = "" {
+          didSet {
+              self.search()
+          }
+      }
     
    private var count = 0
    private var offSet = 0
@@ -55,4 +60,19 @@ class PokemonListViewModel: ObservableObject {
                loadingMore = false
            }
        }
+    func search (){
+          
+          pokemonList = self.pokemons.filter {
+            searchText.isEmpty ? true :( $0.name.lowercased().contains(searchText.lowercased()) || $0.url.split(separator: "/").last!.contains(searchText) )
+            
+          }.chunked(into: 2)
+         
+          if  let result = pokemonList.first{
+              if (result.count == 0){
+                  searchNotFound = true
+              }else{
+                  searchNotFound = false
+              }
+          }
+      }
 }
