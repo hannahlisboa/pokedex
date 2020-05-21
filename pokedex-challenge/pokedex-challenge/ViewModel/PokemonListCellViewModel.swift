@@ -34,7 +34,6 @@ class PokemonListCellViewModel: ObservableObject {
     }
     
     fileprivate func setUrlImage(){
-        let url = Constants.API.baseImageURL + pokemonListItem.id! + ".png"
-        urlImage = url        
+        urlImage = pokemonListItem.urlImage ?? ""
     }
 }
