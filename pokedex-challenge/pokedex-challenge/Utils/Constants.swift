@@ -23,6 +23,7 @@ struct Constants {
             static let Blue = "azure"
             
             struct PokemonTypeColors{
+                static let bug = "bug"
                 static let dark = "dark"
                 static let dragon = "dragon"
                 static let electric = "electric"
