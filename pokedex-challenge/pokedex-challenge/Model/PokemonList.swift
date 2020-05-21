@@ -20,12 +20,14 @@ struct PokemonList:  Hashable, Codable {
 
 struct PokemonListItem: Hashable, Codable {
     var id: String?
+    var urlImage: String?
     let name: String
     let url: String
     
-    init(id: String, name: String, url: String) {
+    init(id: String, name: String, url: String, urlImage: String) {
         self.id = id
         self.name = name
         self.url = url
+        self.urlImage = urlImage
     }
 }
