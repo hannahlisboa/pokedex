@@ -31,6 +31,8 @@ struct PokemonListView: View {
                         }
                     }
                 }
+            }.onTapGesture {
+                return
             }
         }
     }
