@@ -12,20 +12,20 @@ class PokemonListCellViewModel: ObservableObject {
     
     @Published var urlImage = String()
     @Published var name = String()
-    @Published var id = String()
+    @Published var id = 0
+    @Published var pokemonListItem: PokemonListItem
     
-    private var pokemonListItem: PokemonListItem
     init(pokemonItem: PokemonListItem) {
         self.pokemonListItem = pokemonItem
         self.setId()
         self.setUrlImage()
         self.setName()
+        self.setId()
     }
     
     fileprivate func setId(){
-        let splitArray =  pokemonListItem.url.split(separator: "/")
-        if let id = splitArray.last{
-            self.id = String(id)
+        if let id = pokemonListItem.id{
+            self.id = Int(id) ?? 0
         }
     }
     
@@ -34,7 +34,7 @@ class PokemonListCellViewModel: ObservableObject {
     }
     
     fileprivate func setUrlImage(){
-        let url = Constants.API.baseImageURL + id + ".png"
+        let url = Constants.API.baseImageURL + pokemonListItem.id! + ".png"
         urlImage = url        
     }
 }
