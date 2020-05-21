@@ -44,7 +44,10 @@ class PokemonListViewModel: ObservableObject {
                 self.showMsgError = false
                 
                 for pokeItem in pokemonsResult.pokemonList {
-                    let pokemonListItem = PokemonListItem(id: self.getId(item: pokeItem), name: pokeItem.name, url: pokeItem.url)
+                    let pokemonListItem = PokemonListItem(id: self.getId(item: pokeItem),
+                                                          name: pokeItem.name,
+                                                          url: pokeItem.url,
+                                                          urlImage: self.getUrlImage(id: self.getId(item: pokeItem)))
                     self.pokemons.append(pokemonListItem)
                 }
                 self.pokemonList = self.pokemons.chunked(into: 2)
@@ -63,6 +66,10 @@ class PokemonListViewModel: ObservableObject {
            }else{
                loadingMore = false
            }
+       }
+    fileprivate func getUrlImage(id: String) -> String{
+           let url = Constants.API.baseImageURL + id + ".png"
+           return url
        }
     
     fileprivate func getId(item: PokemonListItem) -> String{
