@@ -42,7 +42,11 @@ class PokemonListViewModel: ObservableObject {
             switch result{
             case.success(let pokemonsResult):
                 self.showMsgError = false
-                self.pokemons.append(contentsOf: pokemonsResult.pokemonList)
+                
+                for pokeItem in pokemonsResult.pokemonList {
+                    let pokemonListItem = PokemonListItem(id: self.getId(item: pokeItem), name: pokeItem.name, url: pokeItem.url)
+                    self.pokemons.append(pokemonListItem)
+                }
                 self.pokemonList = self.pokemons.chunked(into: 2)
                 self.offSet +=  20
             case .failure(let error):
@@ -60,6 +64,14 @@ class PokemonListViewModel: ObservableObject {
                loadingMore = false
            }
        }
+    
+    fileprivate func getId(item: PokemonListItem) -> String{
+          let splitArray =  item.url.split(separator: "/")
+          if let id = splitArray.last{
+             return String(id)
+          }
+        return ""
+      }
     func search (){
           
           pokemonList = self.pokemons.filter {
