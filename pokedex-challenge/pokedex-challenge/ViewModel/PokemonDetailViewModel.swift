@@ -20,6 +20,7 @@ class PokemonDetailViewModel: ObservableObject {
     @Published var height = 0
     @Published var weight = 0
     @Published var ability = [PokeAbility]()
+    @Published var stats = [PokeStat]()
     @Published var types = [String]()
 
     init(id:String) {
@@ -34,6 +35,13 @@ class PokemonDetailViewModel: ObservableObject {
         self.setType()
         self.setHeight()
         self.setWeight()
+        self.setStats()
+    }
+    
+    fileprivate func setStats(){
+        if let poke = pokemon {
+            stats = poke.stats
+        }
     }
     
     fileprivate func setHeight(){
