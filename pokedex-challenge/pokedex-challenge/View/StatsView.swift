@@ -9,19 +9,27 @@
 import SwiftUI
 
 struct StatsView: View {
-    var pokeStats: [PokeStat]
-    var color: Color
+    
+    @ObservedObject var statsMV: StatsViewModel
+    
+    init(pokeStats: [PokeStat], color: Color ) {
+        statsMV = StatsViewModel(stats: pokeStats, color: color)
+    }
+    
     var body: some View {
         VStack{
-            ForEach(pokeStats, id: \.self) { stats in
-                ProgressBar(value: CGFloat(stats.baseStat)/255, progressColor: self.color).padding()
+            ForEach(0..<self.statsMV.values.count, id: \.self) { index in
+                HStack{
+                    VStack{
+                        Text(self.statsMV.names[index])
+                            .font(.system(size: 12))
+                            .foregroundColor(self.statsMV.color)
+                    }
+                    .frame(width: 35)
+                    .padding(.leading, 10)
+                    ProgressBar(value: CGFloat(self.statsMV.values[index])/255, progressColor: self.statsMV.color).padding()
+                }
             }
-        }
+        }.padding(.top)
     }
 }
-
-//struct StatsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        StatsView()
-//    }
-//}

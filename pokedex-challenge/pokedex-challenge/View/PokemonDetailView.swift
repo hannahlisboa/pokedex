@@ -16,10 +16,7 @@ struct PokemonDetailView: View {
     init(pokeItem: PokemonListItem) {
         self.pokeItem = pokeItem
         pokemonDetailVM = PokemonDetailViewModel(id: pokeItem.id!)
-        UISegmentedControl.appearance().selectedSegmentTintColor = .blue
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.blue], for: .normal)
-        
+
     }
     
     var body: some View {
@@ -81,8 +78,7 @@ struct PokemonDetailView: View {
                         SegmentedComponent(selected: self.$selected, primaryColor: pokemonDetailVM.color)
                         
                         if self.selected == 0{
-                            
-                            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/).background(pokemonDetailVM.color)
+                            StatsView(pokeStats: pokemonDetailVM.stats, color: pokemonDetailVM.color)
                         }
                         else{
                             

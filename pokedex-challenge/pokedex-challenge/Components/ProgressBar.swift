@@ -17,9 +17,13 @@ struct ProgressBar: View {
         GeometryReader { geometry in
             HStack() {
                 Text(self.getPercentage(self.value))
+                    .font(.system(size: 12))
                 ZStack(alignment: .leading) {
                     Rectangle()
+                        
                         .opacity(0.1)
+                        .cornerRadius(5.0)
+                    
                     Rectangle()
                         .frame(minWidth: 0, idealWidth:self.getProgressBarWidth(geometry: geometry),
                                maxWidth: self.getProgressBarWidth(geometry: geometry))
@@ -27,9 +31,11 @@ struct ProgressBar: View {
                         .background(self.progressColor)
                         .animation(.default)
                 }.padding(.trailing, 10)
+                    .cornerRadius(5.0)
                     .frame(height:7)
-            }.frame(height:7)
-        }
+            }
+            
+        }.frame(height:7)
     }
     
     func getProgressBarWidth(geometry:GeometryProxy) -> CGFloat {
@@ -39,7 +45,7 @@ struct ProgressBar: View {
     
     func getPercentage(_ value:CGFloat) -> String {
         let intValue = Int(ceil(value * 100))
-        return String(intValue)
+        return String(format: "%03d", intValue)
     }
     
 }
