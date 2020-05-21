@@ -10,7 +10,7 @@ import SwiftUI
 
 struct PokemonDetailView: View {
     var pokeItem: PokemonListItem
-    @State private var favoriteColor = 0
+    @State private var selected = 0
     
     @ObservedObject var pokemonDetailVM: PokemonDetailViewModel
     init(pokeItem: PokemonListItem) {
@@ -19,7 +19,7 @@ struct PokemonDetailView: View {
         UISegmentedControl.appearance().selectedSegmentTintColor = .blue
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.blue], for: .normal)
-
+        
     }
     
     var body: some View {
@@ -76,15 +76,20 @@ struct PokemonDetailView: View {
                     HStack{
                         Spacer()
                     }
-                    VStack {
-                        Picker(selection: $favoriteColor, label: Text("What is your favorite color?")) {
-                            Text("Red").tag(0)
-                            Text("Green").tag(1)
-                            Text("Blue").tag(2)
-                        }.pickerStyle(SegmentedPickerStyle())
+                    VStack(spacing: 8){
                         
-                        Text("Value: \(favoriteColor)")
-                    }
+                        SegmentedComponent(selected: self.$selected, primaryColor: pokemonDetailVM.color)
+                        
+                        if self.selected == 0{
+                            
+                            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/).background(pokemonDetailVM.color)
+                        }
+                        else{
+                            
+                            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/).background(pokemonDetailVM.color)
+                        }
+                        
+                    }.background(Color("Color").edgesIgnoringSafeArea(.all))
                     Spacer()
                     Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/).background(pokemonDetailVM.color)
                     Spacer()
