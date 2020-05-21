@@ -15,6 +15,7 @@ struct Types {
         case banner
     }
     enum Pokemon: String {
+        case bug
         case dark
         case dragon
         case electric
@@ -84,6 +85,9 @@ struct Types {
             case .fire:
                 return Color(Constants.Design.Color.PokemonTypeColors.fire)
                 
+            case .bug:
+                return Color(Constants.Design.Color.PokemonTypeColors.bug)
+
             }
         }
     }
