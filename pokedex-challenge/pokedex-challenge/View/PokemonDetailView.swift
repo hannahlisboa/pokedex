@@ -10,10 +10,16 @@ import SwiftUI
 
 struct PokemonDetailView: View {
     var pokeItem: PokemonListItem
+    @State private var favoriteColor = 0
+    
     @ObservedObject var pokemonDetailVM: PokemonDetailViewModel
     init(pokeItem: PokemonListItem) {
         self.pokeItem = pokeItem
         pokemonDetailVM = PokemonDetailViewModel(id: pokeItem.id!)
+        UISegmentedControl.appearance().selectedSegmentTintColor = .blue
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.blue], for: .normal)
+
     }
     
     var body: some View {
@@ -24,19 +30,77 @@ struct PokemonDetailView: View {
             .navigationBarTitle("")
             .navigationBarHidden(true)
             LinearGradient(gradient: Gradient(colors: [pokemonDetailVM.color, .white]), startPoint: .top, endPoint: .bottom)
-            .edgesIgnoringSafeArea(.all)
+                .edgesIgnoringSafeArea(.all)
             VStack {
-                Spacer()
-                Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/).background(pokemonDetailVM.color)
-                Spacer()
+                HStack{
+                    Spacer()
+                    VStack{
+                        VStack{
+                            Text("# \(pokemonDetailVM.id)")
+                                .textStyle(PokemonNameDetailStyle())
+                            Text(pokemonDetailVM.name.capitalized).textStyle(PokemonNameDetailStyle())
+                                .padding()
+                        }                        .padding(.top, 30)
+                        
+                        HStack(spacing: 20){
+                            ForEach(pokemonDetailVM.types, id: \.self) { typeName in
+                                VStack{
+                                    Text(typeName)
+                                    
+                                }.padding(5)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 5)
+                                            .stroke(Types.Pokemon(rawValue: typeName)!.color, lineWidth: 2.9))
+                                    .background(Color.white)
+                                    
+                                    //                                    .cornerRadius(15)
+                                    .shadow(color: Color.black.opacity(0.2), radius: 7, x: 10, y: 10)
+                                    .foregroundColor(Types.Pokemon(rawValue: typeName)!.color)
+                            }
+                        }.padding(.bottom)
+                    }
+                    VStack{
+                        ImageViewComponent(url: pokemonDetailVM.urlImage, type: .banner)
+                    }
+                    .padding(.trailing, 20)
+                    .padding(.leading, 20)
+                }.padding(.top, 30)
+                HStack{
+                    Spacer()
+                    Text("Height: \(pokemonDetailVM.height)m").textStyle(PokemonInfoDetailStyle())
+                    Text("Weight: \(pokemonDetailVM.weight)kg")
+                        .textStyle(PokemonInfoDetailStyle())
+                }.padding(.trailing, 10)
+                
+                VStack{
+                    HStack{
+                        Spacer()
+                    }
+                    VStack {
+                        Picker(selection: $favoriteColor, label: Text("What is your favorite color?")) {
+                            Text("Red").tag(0)
+                            Text("Green").tag(1)
+                            Text("Blue").tag(2)
+                        }.pickerStyle(SegmentedPickerStyle())
+                        
+                        Text("Value: \(favoriteColor)")
+                    }
+                    Spacer()
+                    Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/).background(pokemonDetailVM.color)
+                    Spacer()
+                }.background(Color.white)
+                    .cornerRadius(radius: 40, corners: [.topLeft, .topRight])
+                    
+                    .padding(.top, 20)
+                
+                
             }
-            .background(LinearGradient(gradient: Gradient(colors: [pokemonDetailVM.color, .white]), startPoint: .top, endPoint: .bottom))
             .onAppear(){
                 self.pokemonDetailVM.fetchPokemon()
                 
             }
             NavigationBackButton(navigationTitle: "", navigationColor: Color.white)
-
+            
         }
     }
 }

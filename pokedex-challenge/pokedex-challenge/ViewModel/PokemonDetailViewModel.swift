@@ -10,22 +10,73 @@ import Foundation
 import SwiftUI
 
 class PokemonDetailViewModel: ObservableObject {
-    private var id: String
     var pokemon: Pokemon?
     @Published var isLoading = false
     @Published var showMsgError = false
+    @Published var urlImage = String()
     @Published var color = Color.white
+    @Published var id = String()
+    @Published var name = String()
+    @Published var height = 0
+    @Published var weight = 0
+    @Published var ability = [PokeAbility]()
+    @Published var types = [String]()
+
     init(id:String) {
         self.id = id
     }
     
-    func setColor(){
+    fileprivate func loadValues(){
+        self.setUrlImage()
+        self.setColor()
+        self.setName()
+        self.setAbilitys()
+        self.setType()
+        self.setHeight()
+        self.setWeight()
+    }
+    
+    fileprivate func setHeight(){
+        if let poke = pokemon {
+            height = poke.height
+        }
+    }
+    fileprivate func setWeight(){
+           if let poke = pokemon {
+               weight = poke.weight
+           }
+       }
+    
+    fileprivate func setType(){
+        if let poke = pokemon {
+            for pokeType in poke.types {
+                types.append(pokeType.type.name)
+            }
+        }
+    }
+    
+    fileprivate func setName(){
+        if let poke = pokemon{
+            name = poke.name
+        }
+    }
+    
+    fileprivate func setAbilitys(){
+        if let poke = pokemon{
+            ability = poke.abilities
+        }
+    }
+    
+    fileprivate func setColor(){
         if let poke = pokemon{
             if let mainType = poke.types.first {
                 color = Types.Pokemon(rawValue: mainType.type.name)!.color
             }
         }
-        
+    }
+    
+    fileprivate func setUrlImage(){
+        urlImage = Constants.API.baseImageURL + String(pokemon!.id) + ".png"
     }
     
     func fetchPokemon(){
@@ -42,7 +93,7 @@ class PokemonDetailViewModel: ObservableObject {
             case.success(let pokemonsResult):
                 self.showMsgError = false
                 self.pokemon = pokemonsResult
-                self.setColor()
+                self.loadValues()
             case .failure(let error):
                 self.showMsgError = true
                 print("Error", error)
