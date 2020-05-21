@@ -12,15 +12,25 @@ struct PokemonListCellView: View {
     
     @ObservedObject var pokeListCellVM: PokemonListCellViewModel
     @State var showSheetView = false
-    
+    @State var selectionTAG: Int? = nil
+
     init(pokemonItem: PokemonListItem) {
         self.pokeListCellVM = PokemonListCellViewModel(pokemonItem: pokemonItem)
     }
     var body: some View {
         ZStack(alignment: .topTrailing){
+            NavigationLink(destination: PokemonDetailView(pokeItem: self.pokeListCellVM.pokemonListItem)
+                , tag: self.pokeListCellVM.id, selection: self.$selectionTAG, label: {
+                          EmptyView()
+                      })
+                          .buttonStyle(PlainButtonStyle())
+                          .frame(width: 0, height: 0)
+                          .disabled(true)
+                          .hidden()
+                      
             Button(action: {
-                self.showSheetView.toggle()
-                
+                self.selectionTAG = self.pokeListCellVM.id
+
             }, label: {
                 VStack(alignment: .center){
                     ImageViewComponent(url: pokeListCellVM.urlImage, type: .gridCell)
@@ -35,11 +45,7 @@ struct PokemonListCellView: View {
         }.padding()
             .background(Color.white)
             .cornerRadius(15)
-            .shadow(color: Color.black.opacity(0.2), radius: 7, x: 0, y: 1)
-            .sheet(isPresented: $showSheetView) {
-                PokemonDetailView(id: self.pokeListCellVM.id)
-        }
-    }
+            .shadow(color: Color.black.opacity(0.2), radius: 7, x: 0, y: 1)    }
 }
 
 struct SheetView: View {
