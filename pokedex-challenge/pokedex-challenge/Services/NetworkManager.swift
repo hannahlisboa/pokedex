@@ -13,11 +13,6 @@ protocol Network {
     var provider: MoyaProvider<T> { get }
 }
 
-protocol NetworkManagerProtocol {
-    
-        func getPokemonList( completion: @escaping (GetPokemonList)->())
-}
-
 struct NetworkManager: Network {
 //    var provider = MoyaProvider<PokemonAPI>()
     let provider: MoyaProvider<PokemonAPI> = MoyaProvider<PokemonAPI>(plugins: [NetworkLoggerPlugin()])
