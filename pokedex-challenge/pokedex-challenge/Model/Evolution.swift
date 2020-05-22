@@ -37,13 +37,11 @@ struct EvolutionDetail: Codable, Hashable {
 
 struct EvolutionNode: Codable, Hashable {
  
-    let name: String
-    let id: String
+    let species: Species
     let evolutionTo: [Chain]
     
-    init(name: String, id: String, chains: [Chain]) {
-        self.name = name
-        self.id = id
+    init(species: Species, chains: [Chain]) {
+        self.species = species
         self.evolutionTo = chains
     }
 }
