@@ -19,4 +19,13 @@ class ImageSizeHelper{
         
     }
     
+    static func getSizeIcon() -> CGSize {
+           let screenSize = UIScreen.main.bounds
+           var size = CGSize()
+           size.width = screenSize.width/4 - 50
+           size.height =  screenSize.width/4 - 50
+           return  size
+           
+       }
+    
 }

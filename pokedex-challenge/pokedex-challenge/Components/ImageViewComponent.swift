@@ -26,6 +26,8 @@ struct ImageViewComponent: View {
             self.targetSize = ImageSizeHelper.getSizeGridCell()
         case .banner:
             self.targetSize = ImageSizeHelper.getSizeGridCell()
+        case .icon:
+            self.targetSize = ImageSizeHelper.getSizeIcon()
         }
     }
     

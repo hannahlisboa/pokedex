@@ -13,6 +13,7 @@ struct Types {
     enum Image  {
         case gridCell
         case banner
+        case icon
     }
     enum Pokemon: String {
         case bug

@@ -10,14 +10,17 @@ import Foundation
 
 class Helpers {
     
-
-   static func getId(item: String) -> String{
-             let splitArray =  item.split(separator: "/")
-             if let id = splitArray.last{
-                return String(id)
-             }
-           return ""
-         }
-
+    
+    static func getId(url: String) -> String{
+        let splitArray =  url.split(separator: "/")
+        if let id = splitArray.last{
+            return String(id)
+        }
+        return ""
+    }
+    static func getUrlImage(id: String) -> String{
+        let url = Constants.API.baseImageURL + id + ".png"
+        return url
+    }
     
 }
