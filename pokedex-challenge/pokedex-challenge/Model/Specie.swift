@@ -21,6 +21,8 @@ struct Specie: Hashable, Codable {
     }
 }
 
-struct EvolutionChain: Hashable, Codable {
+// MARK: - Species
+struct Species: Codable, Hashable {
+    let name: String
     let url: String
 }
