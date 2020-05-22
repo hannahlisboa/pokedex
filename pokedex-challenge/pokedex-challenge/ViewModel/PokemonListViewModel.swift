@@ -44,10 +44,10 @@ class PokemonListViewModel: ObservableObject {
                 self.showMsgError = false
                 
                 for pokeItem in pokemonsResult.pokemonList {
-                    let pokemonListItem = PokemonListItem(id: self.getId(item: pokeItem),
+                    let pokemonListItem = PokemonListItem(id:Helpers.getId(url: pokeItem.url),
                                                           name: pokeItem.name,
                                                           url: pokeItem.url,
-                                                          urlImage: self.getUrlImage(id: self.getId(item: pokeItem)))
+                                                          urlImage: Helpers.getUrlImage(id: Helpers.getId(url: pokeItem.url)))
                     self.pokemons.append(pokemonListItem)
                 }
                 self.pokemonList = self.pokemons.chunked(into: 2)
@@ -67,18 +67,7 @@ class PokemonListViewModel: ObservableObject {
                loadingMore = false
            }
        }
-    fileprivate func getUrlImage(id: String) -> String{
-           let url = Constants.API.baseImageURL + id + ".png"
-           return url
-       }
     
-    fileprivate func getId(item: PokemonListItem) -> String{
-          let splitArray =  item.url.split(separator: "/")
-          if let id = splitArray.last{
-             return String(id)
-          }
-        return ""
-      }
     func search (){
           
           pokemonList = self.pokemons.filter {
