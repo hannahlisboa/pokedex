@@ -13,9 +13,6 @@ enum  GetPokemonListResult {
     case failure(String)
 }
 
-
-typealias GetPokemonList = (GetPokemonListResult) -> Void
-
 extension NetworkManager {
     
     func getPokemonList (offset:Int , completion: @escaping (GetPokemonListResult)->()){
