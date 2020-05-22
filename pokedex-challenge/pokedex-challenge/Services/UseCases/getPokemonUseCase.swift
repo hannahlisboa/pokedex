@@ -14,8 +14,6 @@ enum  GetPokemonResult {
     case failure(String)
 }
 
-typealias GetPokemon = (GetPokemonResult) -> Void
-
 extension NetworkManager {
     func getPokemon (id:String , completion: @escaping (GetPokemonResult)->()){
         if Connectivity.isConnectedToInternet{
