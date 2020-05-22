@@ -11,7 +11,8 @@ import Moya
 enum PokemonAPI {
     case listPokemons(offset:Int)
     case getPokemon(id: String)
-    
+    case getEvolution(id: String)
+    case getSpecies(id: String)
 }
 
 extension PokemonAPI: TargetType {
@@ -26,7 +27,11 @@ extension PokemonAPI: TargetType {
             return "pokemon"
         case .getPokemon(let id):
             return "pokemon/\(id)"
-
+        case .getEvolution( let id):
+            return "evolution-chain/\(id)"
+        case .getSpecies(let id):
+            return "pokemon-species/\(id)"
+            
         }
     }
     
@@ -42,7 +47,7 @@ extension PokemonAPI: TargetType {
         switch self {
         case .listPokemons(let offset):
             return .requestParameters(parameters: ["offset": offset], encoding: URLEncoding.queryString)
-        case .getPokemon:
+        case .getPokemon, .getEvolution, .getSpecies:
             return .requestPlain
         }
     }
