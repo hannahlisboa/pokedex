@@ -14,24 +14,13 @@ struct Evolution: Codable {
     let id: Int
 }
 
-// MARK: - Chain
-struct Chain: Codable {
-    let evolutionDetails: [EvolutionDetail]
-    let evolvesTo: [Chain]
-    let isBaby: Bool
-    let species: Species
-    
-    enum CodingKeys: String, CodingKey {
-        case evolutionDetails = "evolution_details"
-        case evolvesTo = "evolves_to"
-        case isBaby = "is_baby"
-        case species
-    }
+struct EvolutionChain: Hashable, Codable {
+    let url: String
 }
 
 // MARK: - EvolutionDetail
-struct EvolutionDetail: Codable {
-    let minLevel: Int
+struct EvolutionDetail: Codable, Hashable {
+    let minLevel: Int?
     let needsOverworldRain: Bool
     let timeOfDay: String
     let trigger: Species
@@ -46,25 +35,15 @@ struct EvolutionDetail: Codable {
     }
 }
 
-// MARK: - Species
-struct Species: Codable {
-    let name: String
-    let url: String
-}
-
 struct EvolutionNode: Codable, Hashable {
+ 
     let name: String
     let id: String
-    let level: Int
+    let evolutionTo: [Chain]
     
-    init(chain: Chain) {
-        name = chain.species.name
-        id = Helpers.getId(item: chain.species.url)
-        if  chain.evolutionDetails.count > 0{
-            level = chain.evolutionDetails.first!.minLevel
-        }else{
-            level = 0
-        }
+    init(name: String, id: String, chains: [Chain]) {
+        self.name = name
+        self.id = id
+        self.evolutionTo = chains
     }
 }
-
