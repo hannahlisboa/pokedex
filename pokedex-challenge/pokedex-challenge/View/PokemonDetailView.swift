@@ -67,7 +67,7 @@ struct PokemonDetailView: View {
                     Text("Height: \(pokemonDetailVM.height)m").textStyle(PokemonInfoDetailStyle())
                     Text("Weight: \(pokemonDetailVM.weight)kg")
                         .textStyle(PokemonInfoDetailStyle())
-                }.padding(.trailing, 10)
+                }.padding(.trailing, 20)
                 
                 VStack{
                     HStack{
