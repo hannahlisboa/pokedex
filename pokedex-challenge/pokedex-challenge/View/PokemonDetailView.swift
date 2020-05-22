@@ -82,12 +82,10 @@ struct PokemonDetailView: View {
                         }
                         else{
                             
-                            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/).background(pokemonDetailVM.color)
+                            EvolutionView(id: self.pokemonDetailVM.id)
                         }
                         
                     }.background(Color("Color").edgesIgnoringSafeArea(.all))
-                    Spacer()
-                    Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/).background(pokemonDetailVM.color)
                     Spacer()
                 }.background(Color.white)
                     .cornerRadius(radius: 40, corners: [.topLeft, .topRight])
