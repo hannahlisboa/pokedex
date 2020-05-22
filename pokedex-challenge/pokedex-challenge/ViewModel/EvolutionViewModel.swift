@@ -22,16 +22,15 @@ class EvolutionViewModel: ObservableObject {
     fileprivate func loadChain (chain: Chain) -> [EvolutionNode]{
         var nodes = [EvolutionNode]()
         var chainList = [Chain]()
-        let name = chain.species.name
-        let id = Helpers.getId(item: chain.species.url)
+
         for item in chain.evolvesTo {
             chainList.append(item)
             if (!item.evolvesTo.isEmpty){
                 nodes.append(contentsOf: loadChain(chain: item))
             }
         }
-        let test = EvolutionNode(name: name, id: id, chains: chainList)
-        nodes.append(test)
+        let evolution = EvolutionNode(species: chain.species,  chains: chainList)
+        nodes.append(evolution)
         
         return nodes
        }
@@ -49,7 +48,7 @@ class EvolutionViewModel: ObservableObject {
             switch result{
             case.success(let evolutionResult):
                 self.showMsgError = false
-                self.evolution = self.loadChain(chain: evolutionResult.chain)
+                self.evolution = self.loadChain(chain: evolutionResult.chain).reversed()
             case .failure(let error):
                 self.showMsgError = true
                 print("Error", error)
@@ -71,7 +70,7 @@ class EvolutionViewModel: ObservableObject {
             switch result{
             case.success(let specieResult):
                 self.showMsgError = false
-                self.fetchEvolution(idSpecie: Helpers.getId(item: specieResult.evolutionChain.url))
+                self.fetchEvolution(idSpecie: Helpers.getId(url: specieResult.evolutionChain.url))
             case .failure(let error):
                 self.showMsgError = true
                 print("Error", error)
