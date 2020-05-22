@@ -9,31 +9,33 @@
 import Foundation
 
 class EvolutionViewModel: ObservableObject {
-    @Published var evolutionChain = [EvolutionNode]()
+    @Published var evolution = [EvolutionNode]()
     @Published var isLoading = false
     @Published var showMsgError = false
     @Published var urlImage = String()
-//    @Published var color = Color.white
     var id = String()
     
     init(id: String){
         self.id = id
     }
-   
     
-    fileprivate func loadChain (chainList: [Chain]) -> [EvolutionNode]{
-        var array = [Chain]()
-        var types = [EvolutionNode]()
-        for item in chainList {
-            array.append(item)
-            let chain = EvolutionNode(chain: item)
-            types.append(chain)
+    fileprivate func loadChain (chain: Chain) -> [EvolutionNode]{
+        var nodes = [EvolutionNode]()
+        var chainList = [Chain]()
+        let name = chain.species.name
+        let id = Helpers.getId(item: chain.species.url)
+        for item in chain.evolvesTo {
+            chainList.append(item)
             if (!item.evolvesTo.isEmpty){
-                types.append(contentsOf: loadChain(chainList: item.evolvesTo))
+                nodes.append(contentsOf: loadChain(chain: item))
             }
         }
-        return types
-    }
+        let test = EvolutionNode(name: name, id: id, chains: chainList)
+        nodes.append(test)
+        
+        return nodes
+       }
+   
     func fetchEvolution(idSpecie: String){
         
         if (isLoading){
@@ -47,7 +49,7 @@ class EvolutionViewModel: ObservableObject {
             switch result{
             case.success(let evolutionResult):
                 self.showMsgError = false
-                self.evolutionChain = self.loadChain(chainList: evolutionResult.chain.evolvesTo)
+                self.evolution = self.loadChain(chain: evolutionResult.chain)
             case .failure(let error):
                 self.showMsgError = true
                 print("Error", error)
