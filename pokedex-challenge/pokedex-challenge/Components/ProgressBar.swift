@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ProgressBar: View {
     var value: CGFloat
+    @State private var isDisplayed = false
     
     var progressColor: Color?
     
@@ -25,11 +26,14 @@ struct ProgressBar: View {
                         .cornerRadius(5.0)
                     
                     Rectangle()
-                        .frame(minWidth: 0, idealWidth:self.getProgressBarWidth(geometry: geometry),
-                               maxWidth: self.getProgressBarWidth(geometry: geometry))
+                        .frame(minWidth: 0, idealWidth: self.isDisplayed ? self.getProgressBarWidth(geometry: geometry) : CGFloat(0),
+                               maxWidth: self.isDisplayed ? self.getProgressBarWidth(geometry: geometry) : CGFloat(0))
                         .opacity(0.1)
                         .background(self.progressColor)
-                        .animation(.default)
+                        .animation(Animation.interpolatingSpring(stiffness: 60, damping: 10).delay(0.1))
+                        .onAppear {
+                            self.isDisplayed = true
+                    }
                 }.padding(.trailing, 10)
                     .cornerRadius(5.0)
                     .frame(height:7)
