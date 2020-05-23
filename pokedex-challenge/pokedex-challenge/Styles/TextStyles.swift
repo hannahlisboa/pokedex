@@ -10,7 +10,8 @@ import SwiftUI
 struct TitleCellStyle: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .font(Font.custom(Constants.Design.Font.Title, size: 16))
+        .lineLimit(1)
+            .font(Font.custom(Constants.Design.Font.Title, size: 14))
             .foregroundColor(Color(Constants.Design.Color.Blue))
     }
 }
@@ -40,7 +41,7 @@ struct DetailTitleStyle: ViewModifier {
 struct IdCellStyle: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .font(Font.custom(Constants.Design.Font.SpecialItems, size: 14))
+            .font(Font.custom(Constants.Design.Font.SpecialItems, size: 12))
             .foregroundColor(Color(Constants.Design.Color.Blue))
     }
 }

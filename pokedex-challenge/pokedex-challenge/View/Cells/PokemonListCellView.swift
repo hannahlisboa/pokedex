@@ -34,18 +34,21 @@ struct PokemonListCellView: View {
             }, label: {
                 VStack(alignment: .center){
                     ImageViewComponent(url: pokeListCellVM.urlImage, type: .gridCell)
-                    HStack{
-                        Text("\(pokeListCellVM.id)")
+                    VStack{
+                        Text("#\(pokeListCellVM.id)")
                             .textStyle(IdCellStyle())
                         Text(pokeListCellVM.name)
                             .textStyle(TitleCellStyle())
+
                     }.padding(.bottom, 5)
+                        .padding(.top, 10)
+                        .frame(width: ImageSizeHelper.getSizeGridCell().width)
                 }
             }).buttonStyle(ButtonAnimatedStyle())
         }.padding()
             .background(Color.white)
             .cornerRadius(15)
-            .shadow(color: Color.black.opacity(0.2), radius: 7, x: 0, y: 1)
+            .shadow(color: Color.black.opacity(0.2), radius: 3, x: 0, y: 1)
         
     }
 }

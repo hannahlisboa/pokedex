@@ -25,7 +25,7 @@ struct ImageViewComponent: View {
         case .gridCell:
             self.targetSize = ImageSizeHelper.getSizeGridCell()
         case .banner:
-            self.targetSize = ImageSizeHelper.getSizeGridCell()
+            self.targetSize = ImageSizeHelper.getSizeHighlight()
         case .icon:
             self.targetSize = ImageSizeHelper.getSizeIcon()
         }
@@ -49,7 +49,7 @@ struct ImageViewComponent: View {
             .foregroundColor(.gray)
         }
         .cancelOnDisappear(true)
-        .aspectRatio(contentMode: .fill)
+        .aspectRatio(contentMode: .fit)
         .frame(width: self.targetSize.width, height: self.targetSize.height)
         .animation(.linear(duration: 0.4))
         

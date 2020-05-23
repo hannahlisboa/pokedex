@@ -46,7 +46,7 @@ extension PokemonAPI: TargetType {
     var task: Task {
         switch self {
         case .listPokemons(let offset):
-            return .requestParameters(parameters: ["offset": offset], encoding: URLEncoding.queryString)
+            return .requestParameters(parameters: ["offset": offset, "limit": 30], encoding: URLEncoding.queryString)
         case .getPokemon, .getEvolution, .getSpecies:
             return .requestPlain
         }

@@ -50,8 +50,8 @@ class PokemonListViewModel: ObservableObject {
                                                           urlImage: Helpers.getUrlImage(id: Helpers.getId(url: pokeItem.url)))
                     self.pokemons.append(pokemonListItem)
                 }
-                self.pokemonList = self.pokemons.chunked(into: 2)
-                self.offSet +=  20
+                self.pokemonList = self.pokemons.chunked(into: 3)
+                self.offSet +=  30
             case .failure(let error):
                 self.showMsgError = true
                 print("Error", error)
@@ -73,7 +73,7 @@ class PokemonListViewModel: ObservableObject {
           pokemonList = self.pokemons.filter {
             searchText.isEmpty ? true :( $0.name.lowercased().contains(searchText.lowercased()) || $0.url.split(separator: "/").last!.contains(searchText) )
             
-          }.chunked(into: 2)
+          }.chunked(into: 3)
          
           if  let result = pokemonList.first{
               if (result.count == 0){
