@@ -18,7 +18,6 @@ struct PokemonListRowView:  View {
             
             ForEach(self.pokemonListRow, id: \.self) { pokemonItem in
                 VStack{
-                    //                    MoviesListCellView(movie: movie)
                     PokemonListCellView(pokemonItem: pokemonItem)
                 }
                 .padding(.top)

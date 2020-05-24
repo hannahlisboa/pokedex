@@ -60,7 +60,7 @@ class PokemonListViewModel: ObservableObject {
         
     }
     func fetchLoadMore(row: Int) {
-           if (row == self.pokemonList.count-1){
+           if (row == self.pokemonList.count-1 && searchText.isEmpty){
                self.fetchPokemonList()
                loadingMore = true
            }else{
