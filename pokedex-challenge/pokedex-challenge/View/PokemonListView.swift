@@ -19,21 +19,21 @@ struct PokemonListView: View {
     }
     var body: some View {
         ZStack{
-            List{
-                Section(header:  SearchBar(text: self.$pokemonListVM.searchText, placeholder: "search").listRowInsets(EdgeInsets())) {
-                    
-                    ForEach(0..<self.pokemonListVM.pokemonList.count, id: \.self) { indexRow in
-                        VStack {
-                            PokemonListRowView(pokemonListRow: self.pokemonListVM.pokemonList[indexRow])
-                        }.listRowInsets(EdgeInsets())
-                            .onAppear(){
-                                self.pokemonListVM.fetchLoadMore(row: indexRow)
+            LoadingView(isShowing: pokemonListVM.isLoading && !pokemonListVM.loadingMore , content: {
+                List{
+                    Section(header:  SearchBar(text: self.$pokemonListVM.searchText, placeholder: "search").listRowInsets(EdgeInsets())) {
+                        
+                        ForEach(0..<self.pokemonListVM.pokemonList.count, id: \.self) { indexRow in
+                            VStack {
+                                PokemonListRowView(pokemonListRow: self.pokemonListVM.pokemonList[indexRow])
+                            }.listRowInsets(EdgeInsets())
+                                .onAppear(){
+                                    self.pokemonListVM.fetchLoadMore(row: indexRow)
+                            }
                         }
                     }
                 }
-            }.onTapGesture {
-                return
-            }
+            })
         }
     }
 }
