@@ -34,6 +34,7 @@ struct PokemonListView: View {
                     }
                 }
             })
+            NotFoundView(show: pokemonListVM.searchNotFound && !pokemonListVM.showMsgError, searchText: pokemonListVM.searchText)
         }
     }
 }
