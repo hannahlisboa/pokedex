@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 
 class PokemonDetailViewModel: ObservableObject {
-    var pokemon: Pokemon?
+    @Published var pokemon: Pokemon?
     @Published var isLoading = false
     @Published var showMsgError = false
     @Published var urlImage = String()
@@ -31,7 +31,6 @@ class PokemonDetailViewModel: ObservableObject {
         self.setUrlImage()
         self.setColor()
         self.setName()
-        self.setAbilitys()
         self.setType()
         self.setHeight()
         self.setWeight()
@@ -66,12 +65,6 @@ class PokemonDetailViewModel: ObservableObject {
     fileprivate func setName(){
         if let poke = pokemon{
             name = poke.name
-        }
-    }
-    
-    fileprivate func setAbilitys(){
-        if let poke = pokemon{
-            ability = poke.abilities
         }
     }
     

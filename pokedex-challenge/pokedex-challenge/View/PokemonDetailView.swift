@@ -51,8 +51,6 @@ struct PokemonDetailView: View {
                                                 RoundedRectangle(cornerRadius: 5)
                                                     .stroke(Types.Pokemon(rawValue: typeName)!.color, lineWidth: 2.9))
                                             .background(Color.white)
-                                            
-                                            //                                    .cornerRadius(15)
                                             .shadow(color: Color.black.opacity(0.2), radius: 7, x: 10, y: 10)
                                             .foregroundColor(Types.Pokemon(rawValue: typeName)!.color)
                                     }
@@ -82,9 +80,11 @@ struct PokemonDetailView: View {
                                 if self.selected == 0{
                                     StatsView(pokeStats: self.pokemonDetailVM.stats, color: self.pokemonDetailVM.color)
                                 }
-                                else{
+                                else if self.selected == 1{
                                     
                                     EvolutionView(id: self.pokemonDetailVM.id)
+                                }else{
+                                    ProfileView(pokemon: self.pokemonDetailVM.pokemon, color: self.pokemonDetailVM.color)
                                 }
                                 
                             }.background(Color("Color").edgesIgnoringSafeArea(.all))
