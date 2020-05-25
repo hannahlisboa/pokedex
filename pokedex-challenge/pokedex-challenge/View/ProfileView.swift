@@ -10,6 +10,9 @@ import SwiftUI
 
 struct ProfileView: View {
     var pokemon:Pokemon?
+    @State var showingDetail = false
+    @State var idAbility = String()
+    
     @ObservedObject var profileVM: ProfileViewModel
     @State var index = 0
     
@@ -21,14 +24,16 @@ struct ProfileView: View {
             Text("ABILITIES".capitalized)
                 .fontWeight(.medium)
                 .textStyle(ProfileTitleStyle())
-            
+            ScrollView(.horizontal, showsIndicators: false){
+                
                 HStack(spacing: 10){
                     Spacer()
                     ForEach(profileVM.abilities, id: \.self) { ability in
                         Button(action: {
-                            print("aqui")
+                            self.idAbility = Helpers.getId(url: ability.ability.url)
+                            self.showingDetail.toggle()
                         }) {
-                            Text(ability.ability.name)
+                            Text(ability.ability.name.replacingOccurrences(of: "-", with: " "))
                                 .foregroundColor(self.profileVM.color)
                                 .padding([.horizontal, .vertical], 8)
                                 .overlay(
@@ -40,7 +45,8 @@ struct ProfileView: View {
                     }
                     Spacer()
                     
-            }.padding()
+                }.padding()
+            }
             
             Text("SPRITES".capitalized)
                 .fontWeight(.medium)
@@ -54,17 +60,15 @@ struct ProfileView: View {
                         
                     }
                 }
-                    //                .overlay(
-                    //                    RoundedRectangle(cornerRadius: 5 )
-                    //                        .stroke(self.profileVM.color, lineWidth: 0.9))
-                    .padding(.top, -30)
-                    
-                    .frame(height:  ImageSizeHelper.getSizeHighlight().width)
+                .padding(.top, -30)
+                .frame(height:  ImageSizeHelper.getSizeHighlight().width)
                 Spacer()
                 
             }
             Spacer()
             
+        }.sheet(isPresented: $showingDetail) {
+            AbilityDescriptionView(id: self.idAbility)
         }
     }
 }
