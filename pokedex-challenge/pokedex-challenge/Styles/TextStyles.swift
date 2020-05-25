@@ -64,3 +64,20 @@ struct IdCellStyle: ViewModifier {
             .foregroundColor(Color(Constants.Design.Color.Blue))
     }
 }
+
+struct TitleAbilityDescriptionStyle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .lineLimit(1)
+            .font(Font.custom(Constants.Design.Font.Title, size: 16))
+            .foregroundColor(Color(Constants.Design.Color.Blue))
+            .padding()
+    }
+}
+struct DescriptionAbilityStyle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .padding()
+            .foregroundColor(Color.gray)
+    }
+}
