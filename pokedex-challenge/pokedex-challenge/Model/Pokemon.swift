@@ -21,7 +21,7 @@ struct Pokemon: Hashable, Codable {
     let stats: [PokeStat]
     let abilities: [PokeAbility]
     let types: [PokeType]
-    
+    let sprites: Sprit
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -35,5 +35,7 @@ struct Pokemon: Hashable, Codable {
         case types
         case stats
         case abilities
+        case sprites = "sprites"
     }
+    
 }
