@@ -27,7 +27,7 @@ struct StatsView: View {
                     }
                     .frame(width: 35)
                     .padding(.leading, 10)
-                    ProgressBar(value: CGFloat(self.statsMV.values[index])/255, progressColor: self.statsMV.color).padding()
+                    ProgressBar(value: CGFloat(self.statsMV.values[index]), progressColor: self.statsMV.color).padding()
                 }
             }
         }.padding(.top)

@@ -14,6 +14,11 @@ struct ProgressBar: View {
     
     var progressColor: Color?
     
+    init(value: CGFloat, progressColor: Color) {
+        self.value = value / 255
+        self.progressColor = progressColor
+    }
+    
     var body: some View {
         GeometryReader { geometry in
             HStack() {
@@ -21,10 +26,8 @@ struct ProgressBar: View {
                     .font(.system(size: 12))
                 ZStack(alignment: .leading) {
                     Rectangle()
-                        
                         .opacity(0.1)
                         .cornerRadius(5.0)
-                    
                     Rectangle()
                         .frame(minWidth: 0, idealWidth: self.isDisplayed ? self.getProgressBarWidth(geometry: geometry) : CGFloat(0),
                                maxWidth: self.isDisplayed ? self.getProgressBarWidth(geometry: geometry) : CGFloat(0))
@@ -44,11 +47,11 @@ struct ProgressBar: View {
     
     func getProgressBarWidth(geometry:GeometryProxy) -> CGFloat {
         let frame = geometry.frame(in: .global)
-        return frame.size.width * value
+        return (frame.size.width - CGFloat(40))  * value
     }
     
     func getPercentage(_ value:CGFloat) -> String {
-        let intValue = Int(ceil(value * 100))
+        let intValue = Int(ceil(value * 255))
         return String(format: "%03d", intValue)
     }
     
