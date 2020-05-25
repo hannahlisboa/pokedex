@@ -43,6 +43,9 @@
 		BB81B6FC2474DEB300ADCB7F /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB81B6FB2474DEB300ADCB7F /* SearchBar.swift */; };
 		BB86C5B4247A19E3005C155D /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB86C5B3247A19E3005C155D /* LoadingView.swift */; };
 		BB86C5B6247A1A34005C155D /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB86C5B5247A1A34005C155D /* ActivityIndicator.swift */; };
+		BB86C5B8247B5902005C155D /* NotFoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB86C5B7247B5902005C155D /* NotFoundView.swift */; };
+		BB86C5BA247B595E005C155D /* UIApplication+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB86C5B9247B595E005C155D /* UIApplication+Keyboard.swift */; };
+		BB86C5BC247B5A39005C155D /* Text+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB86C5BB247B5A39005C155D /* Text+Style.swift */; };
 		BB9E28332476CD7C003ABC27 /* StatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9E28322476CD7C003ABC27 /* StatsViewModel.swift */; };
 		BB9E28372476E583003ABC27 /* EvolutionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9E28362476E583003ABC27 /* EvolutionView.swift */; };
 		BB9E283924776631003ABC27 /* Evolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9E283824776631003ABC27 /* Evolution.swift */; };
@@ -133,6 +136,9 @@
 		BB81B6FB2474DEB300ADCB7F /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		BB86C5B3247A19E3005C155D /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		BB86C5B5247A1A34005C155D /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		BB86C5B7247B5902005C155D /* NotFoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotFoundView.swift; sourceTree = "<group>"; };
+		BB86C5B9247B595E005C155D /* UIApplication+Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Keyboard.swift"; sourceTree = "<group>"; };
+		BB86C5BB247B5A39005C155D /* Text+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Style.swift"; sourceTree = "<group>"; };
 		BB9E28322476CD7C003ABC27 /* StatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewModel.swift; sourceTree = "<group>"; };
 		BB9E28362476E583003ABC27 /* EvolutionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvolutionView.swift; sourceTree = "<group>"; };
 		BB9E283824776631003ABC27 /* Evolution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Evolution.swift; sourceTree = "<group>"; };
@@ -255,6 +261,7 @@
 				BB7683AE2476520E00C26059 /* ProgressBar.swift */,
 				BB86C5B3247A19E3005C155D /* LoadingView.swift */,
 				BB86C5B5247A1A34005C155D /* ActivityIndicator.swift */,
+				BB86C5B7247B5902005C155D /* NotFoundView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -264,6 +271,8 @@
 			children = (
 				BB81B6EF2474A4C200ADCB7F /* Array+Chunk.swift */,
 				BB7683AA24763E6700C26059 /* CornerRadius+View.swift */,
+				BB86C5B9247B595E005C155D /* UIApplication+Keyboard.swift */,
+				BB86C5BB247B5A39005C155D /* Text+Style.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -557,6 +566,7 @@
 				BBCAACA62474491800600812 /* Pokemon.swift in Sources */,
 				BB76838E2474F1C500C26059 /* PokemonDetailView.swift in Sources */,
 				BB86C5B4247A19E3005C155D /* LoadingView.swift in Sources */,
+				BB86C5BC247B5A39005C155D /* Text+Style.swift in Sources */,
 				BB76839924759F6300C26059 /* Ability.swift in Sources */,
 				BB73F9CD24784EDE00EE2E8C /* Chain.swift in Sources */,
 				BB9E283D2477765D003ABC27 /* Helpers.swift in Sources */,
@@ -569,6 +579,7 @@
 				BB7683A9247611A300C26059 /* NavigationBackButton.swift in Sources */,
 				BB7683B12476555A00C26059 /* StatsView.swift in Sources */,
 				BB9E283F24777DC7003ABC27 /* EvolutionViewModel.swift in Sources */,
+				BB86C5BA247B595E005C155D /* UIApplication+Keyboard.swift in Sources */,
 				BB9E28332476CD7C003ABC27 /* StatsViewModel.swift in Sources */,
 				BBCAACB42474545500600812 /* Connectivity.swift in Sources */,
 				BB9E284324778C32003ABC27 /* getSpecieUseCase.swift in Sources */,
@@ -588,6 +599,7 @@
 				BBCAACA824744A4300600812 /* PokemonList.swift in Sources */,
 				BB81B6CF2474631800ADCB7F /* PokemonListViewModel.swift in Sources */,
 				BB9E283B247767EE003ABC27 /* getEvolutionUseCase.swift in Sources */,
+				BB86C5B8247B5902005C155D /* NotFoundView.swift in Sources */,
 				BBCAACAF24744B2400600812 /* Constants.swift in Sources */,
 				BB81B6FC2474DEB300ADCB7F /* SearchBar.swift in Sources */,
 				BB81B6F72474C8D400ADCB7F /* PokemonListCellViewModel.swift in Sources */,
