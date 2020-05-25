@@ -23,7 +23,7 @@ struct SegmentedComponent : View {
             }) {
                 Text("STATS")
                     .padding(.vertical,12)
-                    .padding(.horizontal,30)
+                    .padding(.horizontal,20)
                     .font(.system(size: 12))
                     .background(self.selected == 0 ? primaryColor : Color.clear)
                     .clipShape(Capsule())
@@ -38,7 +38,7 @@ struct SegmentedComponent : View {
                 
                 Text("EVOLUTIONS")
                     .padding(.vertical,12)
-                    .padding(.horizontal,30)
+                    .padding(.horizontal,20)
                     .font(.system(size: 12))
                     .background(self.selected == 1 ? primaryColor : Color.clear)
                     .clipShape(Capsule())
@@ -51,9 +51,9 @@ struct SegmentedComponent : View {
                 
             }) {
                 
-                Text("MOVES")
+                Text("PROFILE")
                     .padding(.vertical,12)
-                    .padding(.horizontal,30)
+                    .padding(.horizontal,20)
                     .font(.system(size: 12))
                     .background(self.selected == 2 ? primaryColor : Color.clear)
                     .clipShape(Capsule())
