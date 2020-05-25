@@ -37,11 +37,6 @@ class EvolutionViewModel: ObservableObject {
    
     func fetchEvolution(idSpecie: String){
         
-        if (isLoading){
-            return
-        }
-        isLoading = true
-        
         let provider = NetworkManager()
         provider.getEvolution(id: idSpecie) { (result) in
             self.isLoading = false
@@ -66,16 +61,23 @@ class EvolutionViewModel: ObservableObject {
         
         let provider = NetworkManager()
         provider.getSpecie(id: id) { (result) in
-            self.isLoading = false
             switch result{
             case.success(let specieResult):
                 self.showMsgError = false
                 self.fetchEvolution(idSpecie: Helpers.getId(url: specieResult.evolutionChain.url))
             case .failure(let error):
                 self.showMsgError = true
+                self.isLoading = false
                 print("Error", error)
             }
         }
         
+    }
+    
+    func fetchData(){
+        
+        if (evolution.isEmpty){
+            fetchSpecie()
+        }
     }
 }
