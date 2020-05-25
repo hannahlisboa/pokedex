@@ -15,6 +15,9 @@ struct PagingView<Content>: View where Content: View {
     let color: Color
     @State private var offset = CGFloat.zero
     @State private var dragging = false
+    
+    private let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
+
 
     init(index: Binding<Int>, maxIndex: Int, @ViewBuilder content: @escaping () -> Content, color: Color = Color.white) {
         self._index = index
@@ -35,6 +38,7 @@ struct PagingView<Content>: View where Content: View {
                 }
                 .content.offset(x: self.offset(in: geometry), y: 0)
                 .frame(width: geometry.size.width, alignment: .leading)
+                .onReceive(self.timer) { _ in self.index = (self.index + 1) % (self.maxIndex + 1)  }
                 .gesture(
                     DragGesture().onChanged { value in
                         self.dragging = true
