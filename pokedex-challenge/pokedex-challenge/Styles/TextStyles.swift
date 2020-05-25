@@ -49,6 +49,14 @@ struct DetailTitleStyle: ViewModifier {
             .foregroundColor(Color(Constants.Design.Color.Blue))
     }
 }
+struct ProfileTitleStyle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .padding(.leading)
+            .foregroundColor(Color.gray)
+    }
+}
+
 struct IdCellStyle: ViewModifier {
     func body(content: Content) -> some View {
         content
