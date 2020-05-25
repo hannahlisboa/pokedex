@@ -10,7 +10,7 @@ import SwiftUI
 struct TitleCellStyle: ViewModifier {
     func body(content: Content) -> some View {
         content
-        .lineLimit(1)
+            .lineLimit(1)
             .font(Font.custom(Constants.Design.Font.Title, size: 14))
             .foregroundColor(Color(Constants.Design.Color.Blue))
     }
@@ -31,6 +31,17 @@ struct PokemonInfoDetailStyle: ViewModifier {
     }
 }
 
+struct NotFoundStyle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 26))
+            .foregroundColor(Color(Constants.Design.Color.Blue))
+            .fixedSize(horizontal: false, vertical: true)
+            .multilineTextAlignment(.center)
+            .padding(10)
+    }
+}
+
 struct DetailTitleStyle: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -43,11 +54,5 @@ struct IdCellStyle: ViewModifier {
         content
             .font(Font.custom(Constants.Design.Font.SpecialItems, size: 12))
             .foregroundColor(Color(Constants.Design.Color.Blue))
-    }
-}
-
-extension Text {
-    func textStyle<Style: ViewModifier>(_ style: Style) -> some View {
-        ModifiedContent(content: self, modifier: style)
     }
 }
