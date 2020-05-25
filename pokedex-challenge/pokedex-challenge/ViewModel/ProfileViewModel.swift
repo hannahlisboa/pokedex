@@ -12,8 +12,8 @@ class ProfileViewModel: ObservableObject {
     var pokemon: Pokemon?
     @Published var abilities = [PokeAbility]()
     @Published var urlImages = [String]()
-    
     @Published var color = Color.black
+    
     
     init(pokemon: Pokemon?, color: Color) {
         self.pokemon = pokemon
@@ -31,26 +31,26 @@ class ProfileViewModel: ObservableObject {
     fileprivate func loadImages(){
         if let poke = pokemon{
             let sprites = poke.sprites
-            if let frontShiny = sprites.frontShiny{
-                urlImages.append(frontShiny)
-            }
-            if let frontFemale = sprites.frontFemale{
-                urlImages.append(frontFemale)
-            }
             if let frontDefault = sprites.frontDefault{
                 urlImages.append(frontDefault)
-            }
-            if let frontShinyFemale = sprites.frontShinyFemale{
-                urlImages.append(frontShinyFemale)
             }
             if let backDefault = sprites.backDefault{
                 urlImages.append(backDefault)
             }
+            if let frontShiny = sprites.frontShiny{
+                urlImages.append(frontShiny)
+            }
             if let backShiny = sprites.backShiny{
                 urlImages.append(backShiny)
             }
+            if let frontFemale = sprites.frontFemale{
+                urlImages.append(frontFemale)
+            }
             if let backFemale = sprites.backFemale{
                 urlImages.append(backFemale)
+            }
+            if let frontShinyFemale = sprites.frontShinyFemale{
+                urlImages.append(frontShinyFemale)
             }
             if let backShinyFemale = sprites.backShinyFemale{
                 urlImages.append(backShinyFemale)
