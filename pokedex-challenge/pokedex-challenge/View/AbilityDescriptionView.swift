@@ -17,12 +17,14 @@ struct AbilityDescriptionView: View {
     }
     
     var body: some View {
-        VStack{
-            Text(abilityVM.title)
-            Text(abilityVM.description)
+        ZStack (alignment: .center){
+            VStack{
+                Text(abilityVM.title.uppercased()).textStyle(TitleAbilityDescriptionStyle())
+                Text(abilityVM.description).textStyle(DescriptionAbilityStyle())
+            }
+            ActivityIndicator(isAnimating: true, style: .large).opacity(abilityVM.isLoading ? 1: 0)
         }.onAppear(){
             self.abilityVM.fetchAbility()
         }
-        
     }
 }
