@@ -14,6 +14,8 @@ enum PokemonAPI {
     case getEvolution(id: String)
     case getSpecies(id: String)
     case getAbilityDescription(id: String)
+    case getType(id: String)
+
 
 }
 
@@ -35,6 +37,8 @@ extension PokemonAPI: TargetType {
             return "pokemon-species/\(id)"
         case .getAbilityDescription(let id):
             return "ability/\(id)"
+        case .getType(let id):
+            return "type/\(id)"
         }
     }
     
@@ -50,7 +54,7 @@ extension PokemonAPI: TargetType {
         switch self {
         case .listPokemons(let offset):
             return .requestParameters(parameters: ["offset": offset, "limit": 30], encoding: URLEncoding.queryString)
-        case .getPokemon, .getEvolution, .getSpecies, .getAbilityDescription:
+        case .getPokemon, .getEvolution, .getSpecies, .getAbilityDescription, .getType:
             return .requestPlain
         }
     }
