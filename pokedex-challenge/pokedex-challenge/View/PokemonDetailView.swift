@@ -60,7 +60,7 @@ struct PokemonDetailView: View {
                 
             })
         }.sheet(isPresented: $showingDetail) {
-            TypePokemonListView(id: self.idType)
+            TypePokemonListView(id: self.idType, showingDetail: self.$showingDetail)
         }
     }
     
