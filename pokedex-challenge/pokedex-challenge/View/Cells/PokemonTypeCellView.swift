@@ -18,10 +18,11 @@ struct PokemonTypeCellView: View {
     var body: some View {
         HStack {
             ImageViewComponent(url: typePokemonCellVM.urlImage, type: .gridCell)
-            VStack{
-                Text(typePokemonCellVM.idPokemon)
-                Text(typePokemonCellVM.name)
+            VStack(alignment:.leading){
+                Text(typePokemonCellVM.idPokemon).textStyle(TypeIdCellStyle())
+                Text(typePokemonCellVM.name).textStyle(TypeTitleCellStyle())
             }.padding(20)
+            Spacer()
         }
     }
 }
