@@ -81,3 +81,29 @@ struct DescriptionAbilityStyle: ViewModifier {
             .foregroundColor(Color.gray)
     }
 }
+
+struct TypeDetailTitleStyle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(Font.custom(Constants.Design.Font.Title, size: 26))
+            .foregroundColor(Color.white)
+    }
+}
+
+struct TypeIdCellStyle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(Font.custom(Constants.Design.Font.SpecialItems, size: 16))
+            .foregroundColor(Color(Constants.Design.Color.Blue))
+    }
+}
+
+
+struct TypeTitleCellStyle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .lineLimit(1)
+            .font(Font.custom(Constants.Design.Font.Title, size: 20))
+            .foregroundColor(Color(Constants.Design.Color.Blue))
+    }
+}
