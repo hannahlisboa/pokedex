@@ -23,6 +23,9 @@ struct PokemonTypeCellView: View {
                 Text(typePokemonCellVM.name).textStyle(TypeTitleCellStyle())
             }.padding(20)
             Spacer()
-        }
+        }.padding()
+        .background(Color.white)
+            .shadow(color: Color.black.opacity(0.1), radius: 0, x: 0, y: 0.5)
+
     }
 }
