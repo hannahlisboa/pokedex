@@ -10,12 +10,13 @@ import SwiftUI
 
 struct TypePokemonListView: View {
     
+    @EnvironmentObject var sheetState: SheetState
     @ObservedObject var typesVM: TypePokemonListViewModel
-    @Binding var showingDetail: Bool
+//    @Binding var showingDetail: Bool
     
-    init(id: String, showingDetail:Binding<Bool> ) {
+    init(id: String ) {
         typesVM = TypePokemonListViewModel(id: id)
-        self._showingDetail = showingDetail
+//        self._showingDetail = showingDetail
     }
     
     var body: some View {
@@ -25,7 +26,7 @@ struct TypePokemonListView: View {
                     Text(typesVM.title).textStyle(TypeDetailTitleStyle()).padding(20)
                     Spacer()
                     Button(action: {
-                        self.showingDetail = false
+                        self.sheetState.showingDetail = false
                     }) {
                         Text("Done").foregroundColor(Color.white)
                     }.buttonStyle(PlainButtonStyle())

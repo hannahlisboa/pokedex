@@ -20,6 +20,7 @@ struct PokemonListCellView: View {
     var body: some View {
         ZStack(alignment: .topTrailing){
             NavigationLink(destination: PokemonDetailView(pokeItem: self.pokeListCellVM.pokemonListItem)
+                    .environmentObject(SheetState())
                 , tag: self.pokeListCellVM.id, selection: self.$selectionTAG, label: {
                           EmptyView()
                       })

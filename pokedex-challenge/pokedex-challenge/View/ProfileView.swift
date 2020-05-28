@@ -10,13 +10,13 @@ import SwiftUI
 
 struct ProfileView: View {
     var pokemon:Pokemon?
-    @State var showingDetail = false
-    @State var idAbility = String()
-    
+  
+    @EnvironmentObject var sheetState: SheetState
+
     @ObservedObject var profileVM: ProfileViewModel
     @State var index = 0
     
-    init(pokemon: Pokemon?, color: Color) {
+    init(pokemon: Pokemon?, color: Color ) {
         profileVM = ProfileViewModel(pokemon: pokemon, color: color)
     }
     var body: some View {
@@ -30,8 +30,10 @@ struct ProfileView: View {
                     Spacer()
                     ForEach(profileVM.abilities, id: \.self) { ability in
                         Button(action: {
-                            self.idAbility = Helpers.getId(url: ability.ability.url)
-                            self.showingDetail.toggle()
+                            self.sheetState.idDataSheet = Helpers.getId(url: ability.ability.url)
+                            self.sheetState.activeSheetType = .abilityDescription
+                            self.sheetState.showingDetail = true
+//                     /       self.showingDetail = true
                         }) {
                             Text(ability.ability.name.replacingOccurrences(of: "-", with: " "))
                                 .foregroundColor(self.profileVM.color)
@@ -67,9 +69,10 @@ struct ProfileView: View {
             }
             Spacer()
             
-        }.sheet(isPresented: $showingDetail) {
-            AbilityDescriptionView(id: self.idAbility)
         }
+//        .sheet(isPresented: $showingDetail) {
+//            AbilityDescriptionView(id: self.idAbility)
+//        }
     }
 }
 
