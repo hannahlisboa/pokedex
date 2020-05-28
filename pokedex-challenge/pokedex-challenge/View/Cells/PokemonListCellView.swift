@@ -53,10 +53,3 @@ struct PokemonListCellView: View {
         
     }
 }
-
-struct SheetView: View {
-    var body: some View {
-        Text("Sheet View")
-    }
-}
-
