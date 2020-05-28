@@ -160,14 +160,14 @@ struct PokemonDetailView: View {
                         }) {
                             VStack{
                                 Text(type.name)
+                                    .foregroundColor(Types.Pokemon(rawValue: type.name)!.color)
+                                    .padding([.horizontal, .vertical], 8)
+                                    .background(Color.white)
+                                    .clipShape(RoundedRectangle(cornerRadius: 5))
+                                    .overlay(RoundedRectangle(cornerRadius: 5).stroke(lineWidth: 0.9)
+                                        .foregroundColor(Types.Pokemon(rawValue: type.name)!.color))
                                 
-                            }.padding(5)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 5)
-                                        .stroke(Types.Pokemon(rawValue: type.name)!.color, lineWidth: 2.9))
-                                .background(Color.white)
-                                .shadow(color: Color.black.opacity(0.2), radius: 7, x: 10, y: 10)
-                                .foregroundColor(Types.Pokemon(rawValue: type.name)!.color)
+                            }
                         }.buttonStyle(ButtonAnimatedStyle())
                     }
                     
