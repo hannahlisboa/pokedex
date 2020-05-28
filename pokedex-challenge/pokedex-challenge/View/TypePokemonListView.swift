@@ -28,7 +28,9 @@ struct TypePokemonListView: View {
                     Button(action: {
                         self.sheetState.showingDetail = false
                     }) {
-                        Text("Done").foregroundColor(Color.white)
+                        Image(systemName: "xmark").foregroundColor(Color.white)
+
+//                        Text("Done").foregroundColor(Color.white)
                     }.buttonStyle(PlainButtonStyle())
                         .padding()
                     
