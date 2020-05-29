@@ -15,7 +15,7 @@ extension PokemonAPI {
         var dataUrl: URL?
         
         switch self {
-
+            
         case .listPokemons:
             dataUrl = Bundle(for: ListPokemonTests.self).url(forResource: "ListPokemon", withExtension: "json")
             if let url = dataUrl, let data = try? Data(contentsOf: url) {
@@ -28,8 +28,12 @@ extension PokemonAPI {
                 debugPrint(data)
                 return data
             }
-        case .getEvolution(id: let id):
-            return Data()
+        case .getEvolution:
+            dataUrl = Bundle(for: ListPokemonTests.self).url(forResource: "Evolution", withExtension: "json")
+            if let url = dataUrl, let data = try? Data(contentsOf: url) {
+                debugPrint(data)
+                return data
+            }
         case .getSpecies(id: let id):
             return Data()
         case .getAbilityDescription(id: let id):

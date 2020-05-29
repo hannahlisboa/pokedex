@@ -11,12 +11,14 @@ import Network
 
 enum  GetEvolutionResult {
     case success(Evolution)
-    case failure(String)
+    case failure(Types.NetworkError)
 }
 
 extension NetworkManager {
     
     func getEvolution (id:String , completion: @escaping (GetEvolutionResult)->()){
+        let networkMonitor = NetworkConnectionMonitor()
+        
         provider.request(.getEvolution(id: id
         )) { result in
             switch result {
@@ -27,11 +29,14 @@ extension NetworkManager {
                     
                     completion(.success(results))
                 } catch let error {
-                    completion(.failure(error.localizedDescription))
+                    completion(.failure(.decodingError))
                     print(error)
                 }
             case let .failure(error):
-                completion(.failure(error.localizedDescription))
+                if !networkMonitor.isConnected{
+                    completion(.failure(.noConnection))
+                }
+                completion(.failure(.requestFailed))
                 print(error)
             }
             
