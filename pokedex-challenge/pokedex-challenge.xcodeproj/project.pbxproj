@@ -242,6 +242,19 @@
 			path = GlobalState;
 			sourceTree = "<group>";
 		};
+		BB6F986C24816E0300FE9BB5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BBCAAC70247446C500600812 /* AppDelegate.swift */,
+				BBCAAC72247446C500600812 /* SceneDelegate.swift */,
+				BBCAAC76247446C600600812 /* Assets.xcassets */,
+				BBCAAC7B247446C600600812 /* LaunchScreen.storyboard */,
+				BBCAAC7E247446C600600812 /* Info.plist */,
+				BBCAAC78247446C600600812 /* Preview Content */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		BB76839C2475AD7F00C26059 /* Types */ = {
 			isa = PBXGroup;
 			children = (
@@ -375,23 +388,18 @@
 		BBCAAC6F247446C500600812 /* pokedex-challenge */ = {
 			isa = PBXGroup;
 			children = (
-				BB39510224802D64002450AF /* GlobalState */,
-				BB76839C2475AD7F00C26059 /* Types */,
-				BB81B6F82474DB6F00ADCB7F /* Styles */,
-				BB81B6EE2474A49E00ADCB7F /* Extensions */,
-				BB81B6DB24749E9400ADCB7F /* Components */,
-				BB81B6D224748E7200ADCB7F /* Resources */,
 				BB81B6CB2474627B00ADCB7F /* ViewModel */,
 				BB81B6CA2474627200ADCB7F /* View */,
-				BBCAACAD24744B1500600812 /* Utils */,
 				BBCAACA4247448FF00600812 /* Model */,
+				BB76839C2475AD7F00C26059 /* Types */,
 				BBCAACA3247448F800600812 /* Services */,
-				BBCAAC70247446C500600812 /* AppDelegate.swift */,
-				BBCAAC72247446C500600812 /* SceneDelegate.swift */,
-				BBCAAC76247446C600600812 /* Assets.xcassets */,
-				BBCAAC7B247446C600600812 /* LaunchScreen.storyboard */,
-				BBCAAC7E247446C600600812 /* Info.plist */,
-				BBCAAC78247446C600600812 /* Preview Content */,
+				BB81B6DB24749E9400ADCB7F /* Components */,
+				BB81B6EE2474A49E00ADCB7F /* Extensions */,
+				BBCAACAD24744B1500600812 /* Utils */,
+				BB39510224802D64002450AF /* GlobalState */,
+				BB81B6F82474DB6F00ADCB7F /* Styles */,
+				BB81B6D224748E7200ADCB7F /* Resources */,
+				BB6F986C24816E0300FE9BB5 /* Supporting Files */,
 			);
 			path = "pokedex-challenge";
 			sourceTree = "<group>";
@@ -851,9 +859,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"pokedex-challenge/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"pokedex-challenge/Supporting Files/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "pokedex-challenge/Info.plist";
+				INFOPLIST_FILE = "pokedex-challenge/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -870,9 +878,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"pokedex-challenge/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"pokedex-challenge/Supporting Files/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "pokedex-challenge/Info.plist";
+				INFOPLIST_FILE = "pokedex-challenge/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
