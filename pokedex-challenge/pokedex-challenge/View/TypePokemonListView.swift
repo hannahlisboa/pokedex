@@ -12,11 +12,9 @@ struct TypePokemonListView: View {
     
     @EnvironmentObject var sheetState: SheetState
     @ObservedObject var typesVM: TypePokemonListViewModel
-//    @Binding var showingDetail: Bool
     
     init(id: String ) {
         typesVM = TypePokemonListViewModel(id: id)
-//        self._showingDetail = showingDetail
     }
     
     var body: some View {
@@ -29,8 +27,6 @@ struct TypePokemonListView: View {
                         self.sheetState.showingDetail = false
                     }) {
                         Image(systemName: "xmark").foregroundColor(Color.white)
-
-//                        Text("Done").foregroundColor(Color.white)
                     }.buttonStyle(PlainButtonStyle())
                         .padding()
                     
