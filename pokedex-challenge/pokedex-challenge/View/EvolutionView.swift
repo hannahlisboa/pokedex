@@ -17,7 +17,6 @@ struct EvolutionView: View {
     }
     var body: some View {
         ZStack (alignment: .center){
-            VStack (alignment:.leading){
                 List{
                     ForEach(self.evolutionVM.evolution , id: \.self) { evolutionTo in
                         VStack{
@@ -39,8 +38,10 @@ struct EvolutionView: View {
                         }.padding()
                     }.listRowInsets(EdgeInsets())
                 }
-                
-            }
+            Text(Constants.Data.Strings.notEvolution)
+                .textStyle(ProfileTitleStyle())
+                .opacity(evolutionVM.evolve ? 0 : 1)
+
             .onAppear(){
                 self.evolutionVM.fetchData()
             }

@@ -52,8 +52,11 @@ struct Constants {
         
     }
     struct Data {
-        
         static let bannerDataConnection = BannerModifier.BannerData(title: "No Connection!", detail: "No internet connection was found. Please try again later.", type: .Error)
+        
+        struct Strings {
+            static let notEvolution = "This Pokémon does not evolve."
+        }
         
     }
 }

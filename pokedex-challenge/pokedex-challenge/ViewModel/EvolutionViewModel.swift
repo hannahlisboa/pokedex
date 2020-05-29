@@ -13,6 +13,7 @@ class EvolutionViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var showMsgError = false
     @Published var urlImage = String()
+    @Published var evolve = true
     var id = String()
     
     init(id: String){
@@ -22,7 +23,11 @@ class EvolutionViewModel: ObservableObject {
     fileprivate func loadChain (chain: Chain) -> [EvolutionNode]{
         var nodes = [EvolutionNode]()
         var chainList = [Chain]()
-
+        if chain.evolvesTo.isEmpty{
+            evolve = false
+            return nodes
+        }
+        
         for item in chain.evolvesTo {
             chainList.append(item)
             if (!item.evolvesTo.isEmpty){
