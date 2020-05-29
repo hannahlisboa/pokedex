@@ -15,11 +15,17 @@ struct PokemonListView: View {
         UITableView.appearance().separatorStyle = .none
         
         pokemonListVM = PokemonListViewModel()
-        pokemonListVM.fetchPokemonList()
+        self.fetchPokemons()
     }
+    
+    func fetchPokemons(){
+        pokemonListVM.fetchPokemonList()
+        
+    }
+    
     var body: some View {
         ZStack{
-            LoadingView(isShowing: pokemonListVM.isLoading && !pokemonListVM.loadingMore , content: {
+            LoadingView(isShowing: pokemonListVM.isLoading && pokemonListVM.pokemonList.isEmpty , content: {
                 List{
                     Section(header:  SearchBar(text: self.$pokemonListVM.searchText, placeholder: "search").listRowInsets(EdgeInsets())) {
                         
@@ -32,10 +38,19 @@ struct PokemonListView: View {
                             }
                         }
                     }
+                    HStack(){
+                        Spacer()
+                        ActivityIndicator(isAnimating: true, style: .medium)
+                            .opacity(self.pokemonListVM.loadingMore ? 1.0 : 0.0)
+                        
+                        Spacer()
+                    }
                 }
+                
             })
+            ErrorView(show: pokemonListVM.showMsgError, tapView: self.fetchPokemons)
             NotFoundView(show: pokemonListVM.searchNotFound && !pokemonListVM.showMsgError, searchText: pokemonListVM.searchText)
-        }
+        }.banner(data: $pokemonListVM.bannerData, show: self.$pokemonListVM.networkConnectionError)
     }
 }
 
