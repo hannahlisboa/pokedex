@@ -22,7 +22,8 @@ class PokemonDetailViewModel: ObservableObject {
     @Published var ability = [PokeAbility]()
     @Published var stats = [PokeStat]()
     @Published var types = [Type]()
-
+    @Published var networkConnectionError = false
+    
     init(id:String) {
         self.id = id
     }
@@ -49,10 +50,10 @@ class PokemonDetailViewModel: ObservableObject {
         }
     }
     fileprivate func setWeight(){
-           if let poke = pokemon {
-               weight = poke.weight
-           }
-       }
+        if let poke = pokemon {
+            weight = poke.weight
+        }
+    }
     
     fileprivate func setType(){
         if let poke = pokemon {
@@ -92,11 +93,20 @@ class PokemonDetailViewModel: ObservableObject {
             self.isLoading = false
             switch result{
             case.success(let pokemonsResult):
+                self.networkConnectionError = false
                 self.showMsgError = false
                 self.pokemon = pokemonsResult
                 self.loadValues()
             case .failure(let error):
-                self.showMsgError = true
+                switch error {
+                case .decodingError, .requestFailed:
+                    self.showMsgError = true
+                case .noConnection:
+                    DispatchQueue.main.async {
+                        
+                        self.networkConnectionError = true
+                    }
+                }
                 print("Error", error)
             }
         }

@@ -11,6 +11,7 @@ import SwiftUI
 struct PokemonDetailView: View {
     var pokeItem: PokemonListItem
     @State private var selected = 0
+    @State var navBarHidden: Bool = true
     
     @EnvironmentObject var sheetState: SheetState
     
@@ -21,62 +22,10 @@ struct PokemonDetailView: View {
         
     }
     
-    //    var body: some View {
-    //        ZStack {
-    //            NavigationView {
-    //                Text("")
-    //            }
-    //            .navigationBarTitle("")
-    //            .navigationBarHidden(true)
-    //
-    //                                LinearGradient(gradient: Gradient(colors: [self.pokemonDetailVM.color, .white]), startPoint: .top, endPoint: .bottom)
-    //                                    .edgesIgnoringSafeArea(.all)
-    ////            LoadingView(isShowing: pokemonDetailVM.isLoading, content: {
-    ////                ZStack{
-    ////                    LinearGradient(gradient: Gradient(colors: [self.pokemonDetailVM.color, .white]), startPoint: .top, endPoint: .bottom)
-    ////                        .edgesIgnoringSafeArea(.all)
-    ////                    VStack {
-    ////                        self.header()
-    ////                        HStack{
-    ////                            Spacer()
-    ////                            Text("Height: \(self.pokemonDetailVM.height)m").textStyle(PokemonInfoDetailStyle())
-    ////                            Text("Weight: \(self.pokemonDetailVM.weight)kg")
-    ////                                .textStyle(PokemonInfoDetailStyle())
-    ////                        }.padding(.trailing, 20)
-    ////
-    ////                        VStack{
-    ////                            HStack{
-    ////                                Spacer()
-    ////                            }
-    ////                            self.segmentedView()
-    ////                            Spacer()
-    ////                        }.background(Color.white)
-    ////                            .cornerRadius(radius: 40, corners: [.topLeft, .topRight])
-    ////                            .padding(.top, 20)
-    ////                        Spacer()
-    ////                    }
-    ////                    .onAppear(){
-    ////                        self.pokemonDetailVM.fetchPokemon()
-    ////                    }
-    ////                }
-    ////
-    ////            })
-    //            NavigationBackButton(navigationTitle: "", navigationColor: Color.white)
-    //
-    //        }
-    //
-    //
-    ////        .sheet(isPresented: self.$sheetState.showingDetail) {
-    ////
-    ////            if self.sheetState.activeSheetType == .typePokemon{
-    ////                TypePokemonListView(id: self.sheetState.idDataSheet).environmentObject(self.sheetState)
-    ////            }else{
-    ////                AbilityDescriptionView(id: self.sheetState.idDataSheet)
-    ////            }
-    ////        }
-    //    }
+    fileprivate func fetchData(){
+        self.pokemonDetailVM.fetchPokemon()
+    }
     
-    @State var navBarHidden: Bool = true
     
     var body: some View {
         ZStack {
@@ -105,28 +54,25 @@ struct PokemonDetailView: View {
                         Spacer()
                     }
                     .onAppear(){
-                        self.pokemonDetailVM.fetchPokemon()
+                        self.fetchData()
                     }
                 }
                 
             })
-            NavigationBackButton(navigationTitle: "", navigationColor: Color.white)
-            
-        }
+            ErrorView(show: pokemonDetailVM.showMsgError, tapView: self.fetchData)
+            NavigationBackButton(navigationTitle: "",  navigationColor: pokemonDetailVM.showMsgError ? Color.black :Color.white)
+        }.banner(data: Constants.Data.bannerDataConnection, show: self.$pokemonDetailVM.networkConnectionError)
         .navigationBarTitle("", displayMode: .inline)
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: NavigationBackButton(navigationTitle: "", navigationColor: Color.white)
             
-        )
+        .sheet(isPresented: self.$sheetState.showingDetail) {
             
-            .sheet(isPresented: self.$sheetState.showingDetail) {
-                
-                if self.sheetState.activeSheetType == .typePokemon{
-                    TypePokemonListView(id: self.sheetState.idDataSheet).environmentObject(self.sheetState)
-                }else{
-                    AbilityDescriptionView(id: self.sheetState.idDataSheet)
-                }
+            if self.sheetState.activeSheetType == .typePokemon{
+                TypePokemonListView(id: self.sheetState.idDataSheet).environmentObject(self.sheetState)
+            }else{
+                AbilityDescriptionView(id: self.sheetState.idDataSheet)
+            }
         }
         .navigationBarTitle("")
         .navigationBarHidden(self.navBarHidden)
