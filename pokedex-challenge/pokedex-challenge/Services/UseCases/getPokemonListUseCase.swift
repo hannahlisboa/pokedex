@@ -10,13 +10,16 @@ import Foundation
 import Network
 enum  GetPokemonListResult {
     case success(PokemonList)
-    case failure(String)
+    case failure(Types.NetworkError)
 }
 
 extension NetworkManager {
     
     func getPokemonList (offset:Int , completion: @escaping (GetPokemonListResult)->()){
-        if Connectivity.isConnectedToInternet{
+        
+         let networkMonitor = NetworkConnectionMonitor()
+
+//        if Connectivity.isConnectedToInternet{
             provider.request(.listPokemons(offset: offset))  { result in
                 switch result {
                 case let .success(response):
@@ -26,15 +29,21 @@ extension NetworkManager {
                         
                         completion(.success(results))
                     } catch let error {
-                        completion(.failure(error.localizedDescription))
+                        completion(.failure(.decodingError))
                         print(error)
                     }
                 case let .failure(error):
-                    completion(.failure(error.localizedDescription))
+                    if !networkMonitor.isConnected{
+                        completion(.failure(.noConnection))
+                    }else{
+                        completion(.failure(.requestFailed))
+                    }
                     print(error)
                 }
             }
-        }
+//        }else{
+//            completion(.failure(.noConnection))
+//        }
     }
     
 }
