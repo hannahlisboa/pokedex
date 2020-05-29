@@ -20,7 +20,7 @@ struct ErrorView: View {
               }
             if self.show {
                 Spacer()
-                Text("☹️").font(.system(size: 100))
+                Text(":(").font(.system(size: 100))
                 Text("An error has occurred! \n Tap here to try again")
                     .textStyle(NotFoundStyle())
                 Spacer()
