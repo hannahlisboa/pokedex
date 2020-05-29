@@ -19,7 +19,6 @@ extension NetworkManager {
         
          let networkMonitor = NetworkConnectionMonitor()
 
-//        if Connectivity.isConnectedToInternet{
             provider.request(.listPokemons(offset: offset))  { result in
                 switch result {
                 case let .success(response):
@@ -41,9 +40,6 @@ extension NetworkManager {
                     print(error)
                 }
             }
-//        }else{
-//            completion(.failure(.noConnection))
-//        }
     }
     
 }
