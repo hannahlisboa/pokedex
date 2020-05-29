@@ -11,12 +11,13 @@ import Network
 
 enum  GetTypeResult {
     case success(TypeDescription)
-    case failure(String)
+    case failure(Types.NetworkError)
 }
 
 extension NetworkManager {
     
     func getType(id:String , completion: @escaping (GetTypeResult)->()){
+        let networkMonitor = NetworkConnectionMonitor()
         provider.request(.getType(id: id
         )) { result in
             switch result {
@@ -26,11 +27,14 @@ extension NetworkManager {
                         response.data)
                     completion(.success(results))
                 } catch let error {
-                    completion(.failure(error.localizedDescription))
+                    completion(.failure(.decodingError))
                     print(error)
                 }
             case let .failure(error):
-                completion(.failure(error.localizedDescription))
+                if !networkMonitor.isConnected{
+                    completion(.failure(.noConnection))
+                }
+                completion(.failure(.requestFailed))
                 print(error)
             }
             

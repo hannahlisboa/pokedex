@@ -102,10 +102,7 @@ class PokemonDetailViewModel: ObservableObject {
                 case .decodingError, .requestFailed:
                     self.showMsgError = true
                 case .noConnection:
-                    DispatchQueue.main.async {
-                        
-                        self.networkConnectionError = true
-                    }
+                    self.networkConnectionError = true
                 }
                 print("Error", error)
             }

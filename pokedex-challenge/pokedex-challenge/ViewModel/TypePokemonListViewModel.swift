@@ -15,7 +15,8 @@ class TypePokemonListViewModel: ObservableObject {
     @Published var pokemonList = [TypesPokemon]()
     @Published var title = String()
     @Published var color = Color.white
-
+    @Published var networkConnectionError = false
+    
     var id: String
     
     init(id: String) {
@@ -24,7 +25,7 @@ class TypePokemonListViewModel: ObservableObject {
     
     func setColor(){
         self.color =  Types.Pokemon(rawValue: self.title)!.color
-
+        
     }
     func fetchType(){
         
@@ -38,12 +39,18 @@ class TypePokemonListViewModel: ObservableObject {
             self.isLoading = false
             switch result{
             case.success(let typeResult):
+                self.networkConnectionError = false
                 self.showMsgError = false
                 self.pokemonList = typeResult.pokemon
                 self.title = typeResult.name
                 self.setColor()
             case .failure(let error):
-                self.showMsgError = true
+                switch error {
+                case .decodingError, .requestFailed:
+                    self.showMsgError = true
+                case .noConnection:
+                    self.networkConnectionError = true
+                }
                 print("Error", error)
             }
         }

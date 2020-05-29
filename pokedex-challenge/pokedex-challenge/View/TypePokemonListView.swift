@@ -17,28 +17,37 @@ struct TypePokemonListView: View {
         typesVM = TypePokemonListViewModel(id: id)
     }
     
+    func fetchData(){
+        self.typesVM.fetchType()
+    }
+    
     var body: some View {
-        List {
-            Section(header:
-                HStack{
-                    Text(typesVM.title).textStyle(TypeDetailTitleStyle()).padding(20)
-                    Spacer()
-                    Button(action: {
-                        self.sheetState.showingDetail = false
-                    }) {
-                        Image(systemName: "xmark").foregroundColor(Color.white)
-                    }.buttonStyle(PlainButtonStyle())
-                        .padding()
-                    
-                }.background(typesVM.color)
-                    .listRowInsets(EdgeInsets()))
-            {
-                ForEach(typesVM.pokemonList, id: \.self) { type in
-                    PokemonTypeCellView(type: type.pokemon)
+        ZStack {
+            LoadingView(isShowing: typesVM.isLoading && typesVM.pokemonList.isEmpty , content: {
+                List {
+                    Section(header:
+                        HStack{
+                            Text(self.typesVM.title).textStyle(TypeDetailTitleStyle()).padding(20)
+                            Spacer()
+                            Button(action: {
+                                self.sheetState.showingDetail = false
+                            }) {
+                                Image(systemName: "xmark").foregroundColor(Color.white)
+                            }.buttonStyle(PlainButtonStyle())
+                                .padding()
+                            
+                        }.background(self.typesVM.color)
+                            .listRowInsets(EdgeInsets()))
+                    {
+                        ForEach(self.typesVM.pokemonList, id: \.self) { type in
+                            PokemonTypeCellView(type: type.pokemon)
+                        }
+                    }
+                }.onAppear(){
+                    self.typesVM.fetchType()
                 }
-            }
-        }.onAppear(){
-            self.typesVM.fetchType()
-        }
+            })
+            ErrorView(show: typesVM.showMsgError, tapView: self.fetchData)
+        }.banner(data: Constants.Data.bannerDataConnection, show: self.$typesVM.networkConnectionError)
     }
 }
