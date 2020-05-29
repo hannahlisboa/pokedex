@@ -10,10 +10,13 @@ import Foundation
 import SwiftUI
 struct Types {
     
+    enum NetworkError: Error {
+        case decodingError, requestFailed, noConnection
+    }
+    
     enum ActiveSheet {
        case typePokemon, abilityDescription
     }
-    
     enum Image  {
         case gridCell
         case banner
