@@ -22,7 +22,7 @@ struct LoadingView<Content>: View where Content: View {
                     .blur(radius: self.isShowing ? 3 : 0)
 
                 VStack {
-                    Text("Loading...")
+                    Text(Constants.Data.Strings.loadingText)
                     ActivityIndicator(isAnimating: true, style: .large)
                 }
                 .frame(width: geometry.size.width / 2,

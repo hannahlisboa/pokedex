@@ -19,13 +19,11 @@ struct PokemonDetailView: View {
     init(pokeItem: PokemonListItem) {
         self.pokeItem = pokeItem
         pokemonDetailVM = PokemonDetailViewModel(id: pokeItem.id!)
-        
     }
     
     fileprivate func fetchData(){
         self.pokemonDetailVM.fetchPokemon()
     }
-    
     
     var body: some View {
         ZStack {
@@ -37,8 +35,9 @@ struct PokemonDetailView: View {
                         self.header()
                         HStack{
                             Spacer()
-                            Text("Height: \(self.pokemonDetailVM.height)m").textStyle(PokemonInfoDetailStyle())
-                            Text("Weight: \(self.pokemonDetailVM.weight)kg")
+                            Text("\(Constants.Data.Strings.height): \(self.pokemonDetailVM.height)\(Constants.Data.Strings.metersUnit)")
+                                .textStyle(PokemonInfoDetailStyle())
+                            Text("\(Constants.Data.Strings.weight): \(self.pokemonDetailVM.weight)\(Constants.Data.Strings.kilosUnit)")
                                 .textStyle(PokemonInfoDetailStyle())
                         }.padding(.trailing, 20)
                         

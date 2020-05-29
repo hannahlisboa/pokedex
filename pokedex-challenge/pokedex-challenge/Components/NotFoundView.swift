@@ -19,11 +19,11 @@ struct NotFoundView: View {
                 Spacer()
             }
             if self.show {
-                Image(systemName: "magnifyingglass")
+                Image(systemName: Constants.Design.Image.magnifyingglass)
                     .font(.system(size: 100))
                 .foregroundColor(Color(Constants.Design.Color.Blue))
 
-                Text("No pokemon with \(searchText.uppercased()) were found.").textStyle(NotFoundStyle())
+                Text(Constants.Data.Strings.notFoundText(terms: searchText)).textStyle(NotFoundStyle())
                 
             }
         }.onTapGesture {

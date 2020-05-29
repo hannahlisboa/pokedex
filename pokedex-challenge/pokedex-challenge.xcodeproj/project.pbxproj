@@ -85,7 +85,6 @@
 		BBCAACAC24744A6100600812 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCAACAB24744A6100600812 /* NetworkManager.swift */; };
 		BBCAACAF24744B2400600812 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCAACAE24744B2400600812 /* Constants.swift */; };
 		BBCAACB224744FFA00600812 /* getPokemonListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCAACB124744FFA00600812 /* getPokemonListUseCase.swift */; };
-		BBCAACB42474545500600812 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCAACB32474545500600812 /* Connectivity.swift */; };
 		BBD07C952480977B003B851C /* NetworkConnectionMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD07C942480977B003B851C /* NetworkConnectionMonitor.swift */; };
 		BBD07C972480A60B003B851C /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD07C962480A60B003B851C /* Banner.swift */; };
 /* End PBXBuildFile section */
@@ -202,7 +201,6 @@
 		BBCAACAB24744A6100600812 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		BBCAACAE24744B2400600812 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BBCAACB124744FFA00600812 /* getPokemonListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getPokemonListUseCase.swift; sourceTree = "<group>"; };
-		BBCAACB32474545500600812 /* Connectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
 		BBD07C942480977B003B851C /* NetworkConnectionMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConnectionMonitor.swift; sourceTree = "<group>"; };
 		BBD07C962480A60B003B851C /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -457,7 +455,6 @@
 			isa = PBXGroup;
 			children = (
 				BBCAACAE24744B2400600812 /* Constants.swift */,
-				BBCAACB32474545500600812 /* Connectivity.swift */,
 				BB81B6EC2474A17800ADCB7F /* ImageSizeHelper.swift */,
 				BB9E283C2477765D003ABC27 /* Helpers.swift */,
 			);
@@ -657,7 +654,6 @@
 				BB9E283F24777DC7003ABC27 /* EvolutionViewModel.swift in Sources */,
 				BB86C5BA247B595E005C155D /* UIApplication+Keyboard.swift in Sources */,
 				BB9E28332476CD7C003ABC27 /* StatsViewModel.swift in Sources */,
-				BBCAACB42474545500600812 /* Connectivity.swift in Sources */,
 				BB9E284324778C32003ABC27 /* getSpecieUseCase.swift in Sources */,
 				BB9E28372476E583003ABC27 /* EvolutionView.swift in Sources */,
 				BBCAACAA24744A4F00600812 /* PokemonAPI.swift in Sources */,

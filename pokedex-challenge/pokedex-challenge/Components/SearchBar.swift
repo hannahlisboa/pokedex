@@ -49,10 +49,3 @@ struct SearchBar: UIViewRepresentable {
         uiView.text = text
     }
 }
-
-
-struct SearchBar_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchBar(text: .constant("test"), placeholder: "search")
-    }
-}

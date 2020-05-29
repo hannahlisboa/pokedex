@@ -27,7 +27,7 @@ struct PokemonListView: View {
         ZStack{
             LoadingView(isShowing: pokemonListVM.isLoading && pokemonListVM.pokemonList.isEmpty , content: {
                 List{
-                    Section(header:  SearchBar(text: self.$pokemonListVM.searchText, placeholder: "search").listRowInsets(EdgeInsets())) {
+                    Section(header:  SearchBar(text: self.$pokemonListVM.searchText, placeholder: Constants.Data.Strings.searchBarPlaceHolder).listRowInsets(EdgeInsets())) {
                         
                         ForEach(0..<self.pokemonListVM.pokemonList.count, id: \.self) { indexRow in
                             VStack {

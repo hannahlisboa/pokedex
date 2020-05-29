@@ -27,7 +27,7 @@ struct EvolutionView: View {
                                     EvolutionItemView(species: evolutionTo.species)
                                     Spacer()
                                     
-                                    Image(systemName: "chevron.right.2")
+                                    Image(systemName: Constants.Design.Image.chevronRight)
                                     Spacer()
                                     
                                     EvolutionItemView(species: item.species)

@@ -107,3 +107,14 @@ struct TypeTitleCellStyle: ViewModifier {
             .foregroundColor(Color(Constants.Design.Color.Blue))
     }
 }
+
+struct SegmentedTextStyle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .clipShape(Capsule())
+            .padding(.vertical,12)
+            .padding(.horizontal,20)
+            .font(.system(size: 12))
+    }
+}
+

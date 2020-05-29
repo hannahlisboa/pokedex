@@ -21,7 +21,7 @@ struct ProfileView: View {
     }
     var body: some View {
         VStack(alignment: .leading){
-            Text("ABILITIES".capitalized)
+            Text(Constants.Data.Strings.abilitiesTitle.capitalized)
                 .fontWeight(.medium)
                 .textStyle(ProfileTitleStyle())
             ScrollView(.horizontal, showsIndicators: false){
@@ -33,7 +33,6 @@ struct ProfileView: View {
                             self.sheetState.idDataSheet = Helpers.getId(url: ability.ability.url)
                             self.sheetState.activeSheetType = .abilityDescription
                             self.sheetState.showingDetail = true
-//                     /       self.showingDetail = true
                         }) {
                             Text(ability.ability.name.replacingOccurrences(of: "-", with: " "))
                                 .foregroundColor(self.profileVM.color)
@@ -50,7 +49,7 @@ struct ProfileView: View {
                 }.padding()
             }
             
-            Text("SPRITES".capitalized)
+            Text(Constants.Data.Strings.spritesTitle.capitalized)
                 .fontWeight(.medium)
                 .textStyle(ProfileTitleStyle())
             
@@ -70,9 +69,6 @@ struct ProfileView: View {
             Spacer()
             
         }
-//        .sheet(isPresented: $showingDetail) {
-//            AbilityDescriptionView(id: self.idAbility)
-//        }
     }
 }
 

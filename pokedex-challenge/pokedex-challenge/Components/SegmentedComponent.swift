@@ -21,12 +21,11 @@ struct SegmentedComponent : View {
                 self.selected = 0
                 
             }) {
-                Text("STATS")
-                    .padding(.vertical,12)
-                    .padding(.horizontal,20)
-                    .font(.system(size: 12))
+                Text(Constants.Data.Strings.statsTitle)
+                    .textStyle(SegmentedTextStyle())
                     .background(self.selected == 0 ? primaryColor : Color.clear)
                     .clipShape(Capsule())
+
             }
             .foregroundColor(self.selected == 0 ? .white : primaryColor)
             
@@ -36,12 +35,11 @@ struct SegmentedComponent : View {
                 
             }) {
                 
-                Text("EVOLUTIONS")
-                    .padding(.vertical,12)
-                    .padding(.horizontal,20)
-                    .font(.system(size: 12))
+                Text(Constants.Data.Strings.evolutionsTitle)
+                    .textStyle(SegmentedTextStyle())
                     .background(self.selected == 1 ? primaryColor : Color.clear)
                     .clipShape(Capsule())
+
             }
             .foregroundColor(self.selected == 1 ? .white : primaryColor)
             
@@ -51,12 +49,11 @@ struct SegmentedComponent : View {
                 
             }) {
                 
-                Text("PROFILE")
-                    .padding(.vertical,12)
-                    .padding(.horizontal,20)
-                    .font(.system(size: 12))
+                Text(Constants.Data.Strings.profileTitle)
+                    .textStyle(SegmentedTextStyle())
                     .background(self.selected == 2 ? primaryColor : Color.clear)
                     .clipShape(Capsule())
+
             }
             .foregroundColor(self.selected == 2 ? .white : primaryColor)
             

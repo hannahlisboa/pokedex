@@ -37,7 +37,7 @@ struct RootNavigationView: View {
     var body: some View {
         NavigationView{
             PokemonListView()
-            .navigationBarTitle("Pokédex")
+                .navigationBarTitle(Constants.Data.Strings.navBarTitleApplication)
         }
     }
 }

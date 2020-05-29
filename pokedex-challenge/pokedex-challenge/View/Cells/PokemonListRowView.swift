@@ -29,11 +29,3 @@ struct PokemonListRowView:  View {
     }
     
 }
-//struct PokemonListRowView_Previews: PreviewProvider {
-//    
-//    @State static var pokemonRow = [PokemonListRowView]()
-//    
-//    static var previews: some View {
-//        PokemonListRowView(pokemonListRow: pokemonRow)
-//    }
-//}

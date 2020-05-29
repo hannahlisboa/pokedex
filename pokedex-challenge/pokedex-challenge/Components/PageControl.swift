@@ -1,9 +1,11 @@
-/*
-See LICENSE folder for this sample’s licensing information.
+//
+//  PageControl.swift
+//  pokedex-challenge
+//
+//  Created by Hannah  on 19/05/2020.
+//  Copyright © 2020 Hannah . All rights reserved.
+//
 
-Abstract:
-A view wrapping a UIPageControl.
-*/
 
 import SwiftUI
 

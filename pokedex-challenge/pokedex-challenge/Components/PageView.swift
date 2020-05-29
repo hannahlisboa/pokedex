@@ -1,9 +1,10 @@
-/*
-See LICENSE folder for this sample’s licensing information.
-
-Abstract:
-A view for bridging a UIPageViewController.
-*/
+//
+//  PagingView.swift
+//  pokedex-challenge
+//
+//  Created by Hannah  on 19/05/2020.
+//  Copyright © 2020 Hannah . All rights reserved.
+//
 
 import SwiftUI
 

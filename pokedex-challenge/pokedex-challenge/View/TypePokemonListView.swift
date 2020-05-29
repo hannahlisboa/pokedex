@@ -32,7 +32,7 @@ struct TypePokemonListView: View {
                             Button(action: {
                                 self.sheetState.showingDetail = false
                             }) {
-                                Image(systemName: "xmark").foregroundColor(Color.white)
+                                Image(systemName: Constants.Design.Image.xmark).foregroundColor(Color.white)
                             }.buttonStyle(PlainButtonStyle())
                                 .padding()
                             

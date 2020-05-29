@@ -24,7 +24,7 @@ struct NavigationBackButton: View {
         VStack {
             HStack {
                 Button(action: {self.presentationMode.wrappedValue.dismiss()}) {
-                    Image(systemName: "chevron.left").padding(.trailing, 10)
+                    Image(systemName: Constants.Design.Image.chevronLeft).padding(.trailing, 10)
                     Text(title.capitalized)
                 }
                 
