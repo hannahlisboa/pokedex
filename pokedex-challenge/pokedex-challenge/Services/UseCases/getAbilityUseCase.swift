@@ -19,8 +19,7 @@ extension NetworkManager {
     func getAbilityDescription (id:String , completion: @escaping (GetAbilityDescriptionResult)->()){
         let networkMonitor = NetworkConnectionMonitor()
 
-        provider.request(.getAbilityDescription(id: id
-        )) { result in
+        provider.request(.getAbilityDescription(id: id)) { result in
             switch result {
             case let .success(response):
                 do {
