@@ -35,9 +35,9 @@ struct BannerModifier: ViewModifier {
             }
         }
     }
-    
+        
     // Members for the Banner
-    @Binding var data:BannerData
+     var data:BannerData
     @Binding var show:Bool
     
     func body(content: Content) -> some View {
@@ -81,7 +81,7 @@ struct BannerModifier: ViewModifier {
 }
 
 extension View {
-    func banner(data: Binding<BannerModifier.BannerData>, show: Binding<Bool>) -> some View {
+    func banner(data: BannerModifier.BannerData, show: Binding<Bool>) -> some View {
         self.modifier(BannerModifier(data: data, show: show))
     }
 }
