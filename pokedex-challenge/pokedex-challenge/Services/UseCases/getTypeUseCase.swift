@@ -18,8 +18,7 @@ extension NetworkManager {
     
     func getType(id:String , completion: @escaping (GetTypeResult)->()){
         let networkMonitor = NetworkConnectionMonitor()
-        provider.request(.getType(id: id
-        )) { result in
+        provider.request(.getType(id: id)) { result in
             switch result {
             case let .success(response):
                 do {

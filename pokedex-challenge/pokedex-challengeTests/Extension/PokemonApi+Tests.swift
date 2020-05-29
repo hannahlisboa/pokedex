@@ -46,8 +46,12 @@ extension PokemonAPI {
                 debugPrint(data)
                 return data
             }
-        case .getType(id: let id):
-            return Data()
+        case .getType:
+            dataUrl = Bundle(for: ListPokemonTests.self).url(forResource: "Type", withExtension: "json")
+            if let url = dataUrl, let data = try? Data(contentsOf: url) {
+                debugPrint(data)
+                return data
+            }
         }
         return Data()
     }
