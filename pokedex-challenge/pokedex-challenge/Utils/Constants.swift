@@ -48,8 +48,13 @@ struct Constants {
             static let BrandFont = "PokemonSolidNormal"
             static let Title = "Lemoneign-Regular"
             static let SpecialItems = "HoboStd"
-            
         }
+        
+    }
+    struct Data {
+        
+        static let bannerDataConnection = BannerModifier.BannerData(title: "No Connection!", detail: "No internet connection was found. Please try again later.", type: .Error)
+        
     }
 }
 

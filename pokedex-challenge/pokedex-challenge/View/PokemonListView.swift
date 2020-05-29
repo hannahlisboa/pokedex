@@ -50,7 +50,7 @@ struct PokemonListView: View {
             })
             ErrorView(show: pokemonListVM.showMsgError, tapView: self.fetchPokemons)
             NotFoundView(show: pokemonListVM.searchNotFound && !pokemonListVM.showMsgError, searchText: pokemonListVM.searchText)
-        }.banner(data: $pokemonListVM.bannerData, show: self.$pokemonListVM.networkConnectionError)
+        }.banner(data: Constants.Data.bannerDataConnection, show: self.$pokemonListVM.networkConnectionError)
     }
 }
 

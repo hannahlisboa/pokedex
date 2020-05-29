@@ -16,16 +16,11 @@ class PokemonListViewModel: ObservableObject {
     @Published var networkConnectionError = false
     @Published var loadingMore = false
     @Published var searchNotFound = false
-    @Published var bannerData: BannerModifier.BannerData
 
     @Published var searchText: String = "" {
         didSet {
             self.search()
         }
-    }
-    
-    init(){
-        bannerData = BannerModifier.BannerData(title: "No Connection!", detail: "No internet connection was found. Please try again later.", type: .Error)
     }
     
     private var count = 0
