@@ -21,6 +21,7 @@ struct PokemonTypeCellView: View {
             VStack(alignment:.leading){
                 Text(typePokemonCellVM.idPokemon).textStyle(TypeIdCellStyle())
                 Text(typePokemonCellVM.name).textStyle(TypeTitleCellStyle())
+                .accessibility(identifier: "NameOfTextLabelInCell")
             }.padding(20)
             Spacer()
         }.padding()

@@ -90,7 +90,6 @@
 		BBCAAC77247446C600600812 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBCAAC76247446C600600812 /* Assets.xcassets */; };
 		BBCAAC7A247446C600600812 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBCAAC79247446C600600812 /* Preview Assets.xcassets */; };
 		BBCAAC7D247446C600600812 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBCAAC7B247446C600600812 /* LaunchScreen.storyboard */; };
-		BBCAAC88247446C600600812 /* pokedex_challengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCAAC87247446C600600812 /* pokedex_challengeTests.swift */; };
 		BBCAAC93247446C600600812 /* pokedex_challengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCAAC92247446C600600812 /* pokedex_challengeUITests.swift */; };
 		BBCAACA2247448E700600812 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = BBCAACA1247448E700600812 /* Moya */; };
 		BBCAACA62474491800600812 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCAACA52474491800600812 /* Pokemon.swift */; };
@@ -218,7 +217,6 @@
 		BBCAAC7C247446C600600812 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BBCAAC7E247446C600600812 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBCAAC83247446C600600812 /* pokedex-challengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "pokedex-challengeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BBCAAC87247446C600600812 /* pokedex_challengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pokedex_challengeTests.swift; sourceTree = "<group>"; };
 		BBCAAC89247446C600600812 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBCAAC8E247446C600600812 /* pokedex-challengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "pokedex-challengeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBCAAC92247446C600600812 /* pokedex_challengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pokedex_challengeUITests.swift; sourceTree = "<group>"; };
@@ -481,7 +479,6 @@
 				BB6F98732481716300FE9BB5 /* API */,
 				BB6F986E2481708400FE9BB5 /* Extension */,
 				BB6F986D2481707500FE9BB5 /* Stubs */,
-				BBCAAC87247446C600600812 /* pokedex_challengeTests.swift */,
 				BBCAAC89247446C600600812 /* Info.plist */,
 			);
 			path = "pokedex-challengeTests";
@@ -774,7 +771,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB6F9870248170A700FE9BB5 /* PokemonApi+Tests.swift in Sources */,
-				BBCAAC88247446C600600812 /* pokedex_challengeTests.swift in Sources */,
 				BB6F98752481718F00FE9BB5 /* ListPokemonTests.swift in Sources */,
 				BB6F988D2481BB6800FE9BB5 /* TypeTests.swift in Sources */,
 				BB6F987D248190D200FE9BB5 /* EvolutionTests.swift in Sources */,

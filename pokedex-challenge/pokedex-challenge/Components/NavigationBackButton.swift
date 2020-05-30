@@ -23,10 +23,13 @@ struct NavigationBackButton: View {
     var body: some View {
         VStack {
             HStack {
-                Button(action: {self.presentationMode.wrappedValue.dismiss()}) {
+                Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                    
+                }) {
                     Image(systemName: Constants.Design.Image.chevronLeft).padding(.trailing, 10)
                     Text(title.capitalized)
-                }
+                }.accessibility(identifier: "backButton")
                 
                 Spacer()
             }.padding().foregroundColor((self.color != nil) ? self.color : Color.blue)

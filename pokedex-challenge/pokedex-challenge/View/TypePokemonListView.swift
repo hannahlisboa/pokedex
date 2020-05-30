@@ -27,13 +27,18 @@ struct TypePokemonListView: View {
                 List {
                     Section(header:
                         HStack{
-                            Text(self.typesVM.title).textStyle(TypeDetailTitleStyle()).padding(20)
+                            Text(self.typesVM.title)
+                                .textStyle(TypeDetailTitleStyle())
+                                .accessibility(identifier: "typeTitle")
+                                .padding(20)
                             Spacer()
                             Button(action: {
                                 self.sheetState.showingDetail = false
                             }) {
-                                Image(systemName: Constants.Design.Image.xmark).foregroundColor(Color.white)
+                                Image(systemName: Constants.Design.Image.xmark)
+                                    .foregroundColor(Color.white)
                             }.buttonStyle(PlainButtonStyle())
+                            .accessibility(identifier: "closeButton")
                                 .padding()
                             
                         }.background(self.typesVM.color)

@@ -90,7 +90,9 @@ struct PokemonDetailView: View {
                 VStack{
                     Text("# \(self.pokemonDetailVM.id)")
                         .textStyle(PokemonNameDetailStyle())
-                    Text(self.pokemonDetailVM.name.capitalized).textStyle(PokemonNameDetailStyle())
+                    Text(self.pokemonDetailVM.name.capitalized)
+                        .textStyle(PokemonNameDetailStyle())
+                        .accessibility(identifier: "namePokemon")
                         .padding()
                 }.padding(.top, 30)
                 
@@ -114,6 +116,7 @@ struct PokemonDetailView: View {
                                 
                             }
                         }.buttonStyle(ButtonAnimatedStyle())
+                        .accessibility(identifier: "typePokemon")
                     }
                     
                 }.padding(.bottom)

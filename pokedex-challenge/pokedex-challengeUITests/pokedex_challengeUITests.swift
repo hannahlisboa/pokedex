@@ -9,35 +9,67 @@
 import XCTest
 
 class pokedex_challengeUITests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
+    
+    var app: XCUIApplication!
+    
+    override func setUp() {
+        app = XCUIApplication()
         app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
+    
+    /*
+     test select correct pokemon
+     */
+    func testShowPokemonDetail(){
+        let cell = app.tables.cells.firstMatch
+        let button = cell.buttons.element.firstMatch
+        let titleCell = button.label.components(separatedBy: "\n").last
+        
+        button.tap()
+        let titleDetail = app.staticTexts["namePokemon"].label
+        
+        XCTAssertEqual(titleCell, titleDetail, "not show detail pokemon correct")
+        
+        app.buttons["backButton"].tap()
 
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
-                XCUIApplication().launch()
-            }
+    }
+    
+    func testShowPokemonForTypesInDetails(){
+        
+        let tableCells = app.tables.cells
+             
+             if tableCells.count > 0 && tableCells.count >= 2 {
+                 let count: Int = 2
+                 
+                 for i in stride(from: 0, to: count , by: 1) {
+                     let tableCell = tableCells.element(boundBy: i)
+                     for index in stride(from: 0, to: 2, by: 1) {
+                         tableCell.buttons.element(boundBy: index).tap()
+                        XCTAssertTrue(app.tables.firstMatch.waitForExistence(timeout: 3 ))
+
+                         let buttons = app.buttons.matching(identifier: "typePokemon")
+                           for i in stride(from: 0, to: buttons.count , by: 1) {
+                               let typeButton = buttons.element(boundBy: i)
+                               
+                               let titleButton = typeButton.label
+                               typeButton.tap()
+                               let titleType = app.staticTexts["typeTitle"].label
+                               app.swipeUp()
+                                
+                               XCTAssertTrue(app.tables.firstMatch.waitForExistence(timeout: 3 ))
+                               XCTAssertEqual(titleButton, titleType, "not show type pokemon correct")
+
+                               let closeButton = app.buttons["closeButton"]
+                               closeButton.tap()
+                           }
+                                                                                               
+
+                            app.buttons["backButton"].tap()
+                     }
+                     
+                     
+                 }
+        
         }
     }
 }
