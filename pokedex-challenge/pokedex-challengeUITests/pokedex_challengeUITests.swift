@@ -34,18 +34,9 @@ class pokedex_challengeUITests: XCTestCase {
         
     }
     
-    func testHannah (){
-        
-        
-        let app = XCUIApplication()
-        let tablesQuery = app.tables
-        tablesQuery/*@START_MENU_TOKEN@*/.buttons["#6\nCharizard"]/*[[".cells.buttons[\"#6\\nCharizard\"]",".buttons[\"#6\\nCharizard\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app.buttons["fire"].tap()
-        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["typeTitle"]/*[[".staticTexts[\"fire\"]",".staticTexts[\"typeTitle\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        tablesQuery/*@START_MENU_TOKEN@*/.buttons["closeButton"]/*[[".buttons[\"xmark\"]",".buttons[\"closeButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        
-    }
-    
+    /*
+     test load pokemon for type
+     */
     func testShowPokemonForTypesInDetails(){
         
         let tableCells = app.tables.cells
@@ -66,17 +57,17 @@ class pokedex_challengeUITests: XCTestCase {
                         
                         let titleButton = typeButton.label
                         typeButton.tap()
-                                                
+                        
                         XCTAssertTrue(app.tables.firstMatch.waitForExistence(timeout: 5 ))
-                    
+                        
                         app.swipeUp()
                         
                         let tablesQuery = app.tables
                         let titleType = tablesQuery.staticTexts["typeTitle"].label
                         XCTAssertEqual(titleButton, titleType, "not show type pokemon correct")
-                       
+                        
                         let closeButton = tablesQuery/*@START_MENU_TOKEN@*/.buttons["closeButton"]/*[[".buttons[\"xmark\"]",".buttons[\"closeButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-
+                        
                         XCTAssertTrue(closeButton.waitForExistence(timeout: 1 ))
                         
                         closeButton.tap()

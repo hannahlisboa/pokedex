@@ -144,7 +144,7 @@ struct PokemonDetailView: View {
             }else{
                 ProfileView(pokemon: self.pokemonDetailVM.pokemon, color: self.pokemonDetailVM.color).environmentObject(self.sheetState)
             }
-            
-        }.background(Color("Color").edgesIgnoringSafeArea(.all))
+
+        }
     }
 }
