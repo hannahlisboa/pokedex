@@ -31,45 +31,63 @@ class pokedex_challengeUITests: XCTestCase {
         XCTAssertEqual(titleCell, titleDetail, "not show detail pokemon correct")
         
         app.buttons["backButton"].tap()
-
+        
+    }
+    
+    func testHannah (){
+        
+        
+        let app = XCUIApplication()
+        let tablesQuery = app.tables
+        tablesQuery/*@START_MENU_TOKEN@*/.buttons["#6\nCharizard"]/*[[".cells.buttons[\"#6\\nCharizard\"]",".buttons[\"#6\\nCharizard\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.buttons["fire"].tap()
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["typeTitle"]/*[[".staticTexts[\"fire\"]",".staticTexts[\"typeTitle\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        tablesQuery/*@START_MENU_TOKEN@*/.buttons["closeButton"]/*[[".buttons[\"xmark\"]",".buttons[\"closeButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
     }
     
     func testShowPokemonForTypesInDetails(){
         
         let tableCells = app.tables.cells
-             
-             if tableCells.count > 0 && tableCells.count >= 2 {
-                 let count: Int = 2
-                 
-                 for i in stride(from: 0, to: count , by: 1) {
-                     let tableCell = tableCells.element(boundBy: i)
-                     for index in stride(from: 0, to: 2, by: 1) {
-                         tableCell.buttons.element(boundBy: index).tap()
-                        XCTAssertTrue(app.tables.firstMatch.waitForExistence(timeout: 3 ))
-
-                         let buttons = app.buttons.matching(identifier: "typePokemon")
-                           for i in stride(from: 0, to: buttons.count , by: 1) {
-                               let typeButton = buttons.element(boundBy: i)
-                               
-                               let titleButton = typeButton.label
-                               typeButton.tap()
-                               let titleType = app.staticTexts["typeTitle"].label
-                               app.swipeUp()
-                                
-                               XCTAssertTrue(app.tables.firstMatch.waitForExistence(timeout: 3 ))
-                               XCTAssertEqual(titleButton, titleType, "not show type pokemon correct")
-
-                               let closeButton = app.buttons["closeButton"]
-                               closeButton.tap()
-                           }
-                                                                                               
-
-                            app.buttons["backButton"].tap()
-                     }
-                     
-                     
-                 }
         
+        if tableCells.count > 0 && tableCells.count >= 2 {
+            let count: Int = 2
+            
+            for i in stride(from: 0, to: count , by: 1) {
+                let tableCell = tableCells.element(boundBy: i)
+                for index in stride(from: 0, to: 3, by: 1) {
+                    tableCell.buttons.element(boundBy: index).tap()
+                    
+                    let buttons = app.buttons.matching(identifier: "typePokemon")
+                    XCTAssertTrue(buttons.element.waitForExistence(timeout: 4 ))
+                    
+                    for i in stride(from: 0, to: buttons.count , by: 1) {
+                        let typeButton = buttons.element(boundBy: i)
+                        
+                        let titleButton = typeButton.label
+                        typeButton.tap()
+                                                
+                        XCTAssertTrue(app.tables.firstMatch.waitForExistence(timeout: 5 ))
+                    
+                        app.swipeUp()
+                        
+                        let tablesQuery = app.tables
+                        let titleType = tablesQuery.staticTexts["typeTitle"].label
+                        XCTAssertEqual(titleButton, titleType, "not show type pokemon correct")
+                       
+                        let closeButton = tablesQuery/*@START_MENU_TOKEN@*/.buttons["closeButton"]/*[[".buttons[\"xmark\"]",".buttons[\"closeButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+
+                        XCTAssertTrue(closeButton.waitForExistence(timeout: 1 ))
+                        
+                        closeButton.tap()
+                    }
+                    
+                    app.buttons["backButton"].tap()
+                }
+                
+                
+            }
+            
         }
     }
 }
