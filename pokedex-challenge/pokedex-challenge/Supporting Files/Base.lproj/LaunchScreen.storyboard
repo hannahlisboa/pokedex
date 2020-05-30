@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pokédex" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O2W-Wi-9tE">
-                                <rect key="frame" x="73.5" y="291.5" width="228" height="84"/>
+                                <rect key="frame" x="69.5" y="298.5" width="236" height="70"/>
                                 <fontDescription key="fontDescription" name="PokemonSolidNormal" family="Pokemon Solid" pointSize="60"/>
                                 <color key="textColor" name="azure"/>
                                 <nil key="highlightedColor"/>

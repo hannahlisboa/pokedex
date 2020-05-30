@@ -6,7 +6,7 @@
 //  Copyright © 2020 Hannah . All rights reserved.
 //
 import XCTest
-@testable import pokedex_challenge
+@testable import pokedex
 import Moya
 
 

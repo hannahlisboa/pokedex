@@ -7,7 +7,7 @@
 //
 
 import Foundation
-@testable import pokedex_challenge
+@testable import pokedex
 import Moya
 
 struct CustomEndPoint {

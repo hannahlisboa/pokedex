@@ -209,7 +209,7 @@
 		BB9E283E24777DC7003ABC27 /* EvolutionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvolutionViewModel.swift; sourceTree = "<group>"; };
 		BB9E284024778511003ABC27 /* Specie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Specie.swift; sourceTree = "<group>"; };
 		BB9E284224778C32003ABC27 /* getSpecieUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getSpecieUseCase.swift; sourceTree = "<group>"; };
-		BBCAAC6D247446C500600812 /* pokedex-challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pokedex-challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBCAAC6D247446C500600812 /* pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBCAAC70247446C500600812 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBCAAC72247446C500600812 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BBCAAC76247446C600600812 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -439,7 +439,7 @@
 		BBCAAC6E247446C500600812 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BBCAAC6D247446C500600812 /* pokedex-challenge.app */,
+				BBCAAC6D247446C500600812 /* pokedex.app */,
 				BBCAAC83247446C600600812 /* pokedex-challengeTests.xctest */,
 				BBCAAC8E247446C600600812 /* pokedex-challengeUITests.xctest */,
 			);
@@ -569,7 +569,7 @@
 				BB81B6E92474A06000ADCB7F /* KingfisherSwiftUIStatic */,
 			);
 			productName = "pokedex-challenge";
-			productReference = BBCAAC6D247446C500600812 /* pokedex-challenge.app */;
+			productReference = BBCAAC6D247446C500600812 /* pokedex.app */;
 			productType = "com.apple.product-type.application";
 		};
 		BBCAAC82247446C600600812 /* pokedex-challengeTests */ = {
@@ -943,9 +943,10 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.hannahlisboa.pokedex-challenge";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
+				PRODUCT_NAME = pokedex;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -962,9 +963,10 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.hannahlisboa.pokedex-challenge";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
+				PRODUCT_NAME = pokedex;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -985,7 +987,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pokedex-challenge.app/pokedex-challenge";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pokedex.app/pokedex";
 			};
 			name = Debug;
 		};
@@ -1006,7 +1008,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pokedex-challenge.app/pokedex-challenge";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pokedex.app/pokedex";
 			};
 			name = Release;
 		};

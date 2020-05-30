@@ -26,6 +26,9 @@ class pokedex_challengeUITests: XCTestCase {
         let titleCell = button.label.components(separatedBy: "\n").last
         
         button.tap()
+        
+        XCTAssertTrue(app.staticTexts.element.waitForExistence(timeout: 10 ))
+
         let titleDetail = app.staticTexts["namePokemon"].label
         
         XCTAssertEqual(titleCell, titleDetail, "not show detail pokemon correct")
@@ -58,7 +61,7 @@ class pokedex_challengeUITests: XCTestCase {
                         let titleButton = typeButton.label
                         typeButton.tap()
                         
-                        XCTAssertTrue(app.tables.firstMatch.waitForExistence(timeout: 5 ))
+                        XCTAssertTrue(app.tables.firstMatch.waitForExistence(timeout: 10 ))
                         
                         app.swipeUp()
                         
@@ -68,7 +71,7 @@ class pokedex_challengeUITests: XCTestCase {
                         
                         let closeButton = tablesQuery/*@START_MENU_TOKEN@*/.buttons["closeButton"]/*[[".buttons[\"xmark\"]",".buttons[\"closeButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
                         
-                        XCTAssertTrue(closeButton.waitForExistence(timeout: 1 ))
+                        XCTAssertTrue(closeButton.waitForExistence(timeout: 2 ))
                         
                         closeButton.tap()
                     }
