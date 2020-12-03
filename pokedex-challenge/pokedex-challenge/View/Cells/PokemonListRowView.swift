@@ -21,10 +21,8 @@ struct PokemonListRowView:  View {
                     PokemonListCellView(pokemonItem: pokemonItem)
                 }
                 .padding(.top)
-                
             }
             Spacer()
-            
         }
     }
     

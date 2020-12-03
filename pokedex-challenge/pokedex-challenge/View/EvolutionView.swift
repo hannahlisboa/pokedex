@@ -23,7 +23,7 @@ struct EvolutionView: View {
                             ForEach(evolutionTo.evolutionTo , id: \.self) { item in
                                 HStack(){
                                     Spacer()
-                                    
+
                                     EvolutionItemView(species: evolutionTo.species)
                                     Spacer()
                                     
@@ -36,7 +36,10 @@ struct EvolutionView: View {
                                 }.padding()
                             }.listRowInsets(EdgeInsets())
                         }.padding()
-                    }.listRowInsets(EdgeInsets())
+                    }
+                    .listRowInsets(EdgeInsets())
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                    .background(Color.white)
                 }
             Text(Constants.Data.Strings.notEvolution)
                 .textStyle(ProfileTitleStyle())

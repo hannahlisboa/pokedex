@@ -131,15 +131,11 @@ struct PokemonDetailView: View {
     
     fileprivate func segmentedView() -> some View {
         return VStack(spacing: 8){
-            
             SegmentedComponent(selected: self.$selected, primaryColor: self.pokemonDetailVM.color)
-            
             if self.selected == 0{
-                
                 StatsView(pokeStats: self.pokemonDetailVM.stats, color: self.pokemonDetailVM.color)
             }
             else if self.selected == 1{
-                
                 EvolutionView(id: self.pokemonDetailVM.id)
             }else{
                 ProfileView(pokemon: self.pokemonDetailVM.pokemon, color: self.pokemonDetailVM.color).environmentObject(self.sheetState)

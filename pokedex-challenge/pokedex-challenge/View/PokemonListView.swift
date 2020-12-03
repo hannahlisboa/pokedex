@@ -13,7 +13,7 @@ struct PokemonListView: View {
     init() {
         UITableView.appearance().tableFooterView = UIView()
         UITableView.appearance().separatorStyle = .none
-        
+
         pokemonListVM = PokemonListViewModel()
         self.fetchPokemons()
     }
@@ -26,27 +26,28 @@ struct PokemonListView: View {
     var body: some View {
         ZStack{
             LoadingView(isShowing: pokemonListVM.isLoading && pokemonListVM.pokemonList.isEmpty , content: {
-                List{
-                    Section(header:  SearchBar(text: self.$pokemonListVM.searchText, placeholder: Constants.Data.Strings.searchBarPlaceHolder).listRowInsets(EdgeInsets())) {
-                        
+                VStack {
+                    SearchBar(text: self.$pokemonListVM.searchText, placeholder: Constants.Data.Strings.searchBarPlaceHolder)
+                    List{
                         ForEach(0..<self.pokemonListVM.pokemonList.count, id: \.self) { indexRow in
                             VStack {
                                 PokemonListRowView(pokemonListRow: self.pokemonListVM.pokemonList[indexRow])
                             }.listRowInsets(EdgeInsets())
-                                .onAppear(){
-                                    self.pokemonListVM.fetchLoadMore(row: indexRow)
+                            .onAppear(){
+                                self.pokemonListVM.fetchLoadMore(row: indexRow)
                             }
                         }
-                    }
-                    HStack(){
-                        Spacer()
-                        ActivityIndicator(isAnimating: true, style: .medium)
-                            .opacity(self.pokemonListVM.loadingMore ? 1.0 : 0.0)
-                        
-                        Spacer()
-                    }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                        .background(Color.white)
+                        HStack(){
+                            Spacer()
+                            ActivityIndicator(isAnimating: true, style: .medium)
+                                .opacity(self.pokemonListVM.loadingMore ? 1.0 : 0.0)
+                            Spacer()
+                        }
+                    }.listStyle(PlainListStyle())
+
                 }
-                
             })
             ErrorView(show: pokemonListVM.showMsgError, tapView: self.fetchPokemons)
             NotFoundView(show: pokemonListVM.searchNotFound && !pokemonListVM.showMsgError, searchText: pokemonListVM.searchText)

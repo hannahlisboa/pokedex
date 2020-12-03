@@ -55,12 +55,12 @@ struct ProfileView: View {
             
             HStack(alignment: .center){
                 Spacer()
-                PagingView(index: $index.animation(), maxIndex: profileVM.urlImages.count - 1, color: self.profileVM.color) {
+                PagingView(index: $index.animation(), maxIndex: profileVM.urlImages.count - 1, content:  {
                     ForEach(self.profileVM.urlImages, id: \.self) { url in
                         ImageViewComponent(url: url, type: .banner)
                         
                     }
-                }
+                }, color: self.profileVM.color)
                 .padding(.top, -30)
                 .frame(height:  ImageSizeHelper.getSizeHighlight().width)
                 Spacer()
